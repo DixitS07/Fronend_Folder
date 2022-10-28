@@ -16,6 +16,8 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }),
 
     ToastContainerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSidenavModule
     
   ],
   providers: [AuthService,EventService,AuthGuard,{

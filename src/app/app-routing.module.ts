@@ -14,12 +14,13 @@ const routes: Routes = [
   },
   {
     path:'events',
-    component:EventsComponent
+    component:EventsComponent,
+    
   },
   {
     path:'special',
     component:SpecialEventComponent
-    // canActivate:[AuthGuard]
+  
   },
   {
     path:'login',
