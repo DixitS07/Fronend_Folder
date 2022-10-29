@@ -10,12 +10,14 @@ import { EventsComponent } from './events/events.component';
 import { SpecialEventComponent } from './special-event/special-event.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthService } from './auth.service';
-import { EventService } from './event.service';
+import { EventService } from './appServices/event.service';
 import { AuthGuard } from './auth.guard';
-import { TokenInterceptorService } from './token-interceptor.service';
+import { TokenInterceptorService } from './appServices/token-interceptor.service';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { AuthService } from './appServices/auth.service';
+import { MaterialsModule } from './appModules/materials/materials.module';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterComponent,
     LoginComponent,
     EventsComponent,
-    SpecialEventComponent
+    SpecialEventComponent,
+    StudentRegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MaterialsModule,
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-top-right',

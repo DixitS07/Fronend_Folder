@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventService } from '../event.service';
+import { EventService } from '../appServices/event.service';
 
 @Component({
   selector: 'app-special-event',

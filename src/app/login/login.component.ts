@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../appServices/auth.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   loginUSer(){
-    this._auth.loginUser(this.loginUSerData).subscribe(
+    this._auth.loggedUser(this.loginUSerData).subscribe(
       (res:any)=>{console.log(res),
        localStorage.setItem('token',res.token)
        this._router.navigate(['/special']);
