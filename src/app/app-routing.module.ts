@@ -9,7 +9,7 @@ import { SpecialEventComponent } from './special-event/special-event.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/events',
+    redirectTo:'/login',
     pathMatch:'full'
   },
   {
