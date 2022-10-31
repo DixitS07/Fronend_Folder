@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 import { AuthService } from './appServices/auth.service';
 import { MaterialsModule } from './appModules/materials/materials.module';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { MaterialsModule } from './appModules/materials/materials.module';
     }),
 
     ToastContainerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSidenavModule
     
   ],
   providers: [AuthService,EventService,AuthGuard,{
