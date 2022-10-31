@@ -10,7 +10,7 @@ import { StudentRegistrationComponent } from './student-registration/student-reg
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/events',
+    redirectTo:'/login',
     pathMatch:'full'
   },
   {
