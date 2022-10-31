@@ -19,6 +19,7 @@ import { StudentRegistrationComponent } from './student-registration/student-reg
 import { AuthService } from './appServices/auth.service';
 import { MaterialsModule } from './appModules/materials/materials.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     LoginComponent,
     EventsComponent,
     SpecialEventComponent,
-    StudentRegistrationComponent
+    StudentRegistrationComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
