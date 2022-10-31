@@ -3,51 +3,53 @@
       <mat-card-title>Register</mat-card-title>
       <mat-divider></mat-divider>
       <mat-card-content>
-        <form>
-          <div class="mb-3">
+        <form [formGroup]="myReactiveForm" (ngSubmit)="registerUser()">
+          <!-- <div class="mb-3">
             <label class="form-label">Profile Photo</label>
-            <input type="file" class="form-control"  
-            [(ngModel)]="registerdUserData.photo" name="photo">
-          </div> 
+            <input type="file" class="form-control"  (change)="getFile($event)"
+            formControlName="photo">
+          </div>  -->
           <div class="mb-3">
             <label class="form-label">First Name</label>
-            <input type="text" class="form-control" [(ngModel)]="registerdUserData.firstName" name="firstName">
+            <input type="text" class="form-control" formControlName="firstName">
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Last Name</label>
-            <input type="text" class="form-control" [(ngModel)]="registerdUserData.lastName" name="lastName">
+            <input type="text" class="form-control" formControlName="lastName">
           </div>
           <div class="mb-3">
             <label class="form-label">Age</label>
-            <input type="number" class="form-control" [(ngModel)]="registerdUserData.age" name="age">
+            <input type="number" class="form-control" formControlName="age">
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="registerdUserData.email" name="email">
+            <input type="email" class="form-control" formControlName="email">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
             <label  class="form-label">Phone</label>
-            <input type="number" class="form-control" [(ngModel)]="registerdUserData.phone" name="phone">
+            <input type="number" class="form-control" formControlName="phone">
           </div>
           <div class="mb-3">
             <label class="form-label">Address</label>
-            <input type="Texarea" class="form-control" [(ngModel)]="registerdUserData.address" name="address">
+            <input type="Texarea" class="form-control" formControlName="address">
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input type="password" class="form-control" [(ngModel)]="registerdUserData.password" name="password">
+            <input type="password" class="form-control" formControlName="password">
           </div>
-         
+          
+          <button class="btn btn-primary" (click)="openSnackBar()">Register</button>
+          <mat-spinner *ngIf="progress"></mat-spinner>
+
         </form>
       </mat-card-content>
       <mat-divider inset></mat-divider>
-      <mat-card-actions>
-        <button type="submit" class="btn btn-primary" (click)="registerUser()">Register</button>
-      </mat-card-actions>
       <mat-card-footer>
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       </mat-card-footer>
     </mat-card>
-  
+    
+    
+    
   </div>

@@ -11,17 +11,18 @@ export class AuthService {
   constructor( private http:HttpClient, private _router:Router) { }
   
   registeredUser(user:any){
-     let myheaders = new HttpHeaders({
-      'Content-Type':'application/json'
-    })
-     return this.http.post('http://localhost:3000/api/register',user,{headers:myheaders})
+    //  let myheaders = new HttpHeaders({
+    //   'Content-Type':'application/json'
+    // })
+    console.log('http')
+     return this.http.post('http://localhost:3000/api/register',user)
   }
 
   loggedUser(user:any){
-    let myheaders = new HttpHeaders({
-      'Content-Type':'application/json'
-    })
-    return this.http.post('http://localhost:3000/api/login',user,{headers:myheaders})
+    // let myheaders = new HttpHeaders({
+    //   'Content-Type':'application/json'
+    // })
+    return this.http.post('http://localhost:3000/api/login',user)
   }
 
   loggedIn(){
