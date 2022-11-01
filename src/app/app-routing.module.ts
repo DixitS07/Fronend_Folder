@@ -5,6 +5,7 @@ import { EventsComponent } from './events/events.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SpecialEventComponent } from './special-event/special-event.component';
+import { StudentListComponent } from './student-list/student-list.component';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 
 const routes: Routes = [
@@ -35,6 +36,12 @@ const routes: Routes = [
     path:'studentRegistration',
     component:StudentRegistrationComponent,
     canActivate:[AuthGuard]
+  },
+  {
+    path:'studentList',
+    component:StudentListComponent,
+    canActivate:[AuthGuard]
+   
   }
 ];
 
