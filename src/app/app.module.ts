@@ -20,6 +20,10 @@ import { AuthService } from './appServices/auth.service';
 import { MaterialsModule } from './appModules/materials/materials.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -30,7 +34,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EventsComponent,
     SpecialEventComponent,
     StudentRegistrationComponent,
-    DashboardComponent
+    DashboardComponent,
+    StudentListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
     ToastContainerModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+    
     
   ],
   providers: [AuthService,EventService,AuthGuard,{
