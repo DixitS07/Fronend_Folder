@@ -1,4 +1,13 @@
 mat-form-field {
     margin-right: 12px;
   }
+.example-card {
+  max-width: 1000px;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+mat-divider{
+margin-bottom: 6px;
+}
+  
   

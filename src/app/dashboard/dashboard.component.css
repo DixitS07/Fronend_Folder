@@ -1,0 +1,24 @@
+button{
+    margin: 10px;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.example-container {
+background-color: aliceblue;
+}
+
+mat-drawer-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-drawer{
+  padding: 20px;
+}
+img{
+  width:18px;
+  height:18px;
+}

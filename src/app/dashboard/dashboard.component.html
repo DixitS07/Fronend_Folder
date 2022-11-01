@@ -1,18 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Eventhub</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+  <mat-toolbar color="accent">
+    <span>Dashboard</span>
+    <button mat-raised-button >Profile</button>
+    <span class="example-spacer"></span>
+    <button mat-raised-button  (click)="_auth.logoutUser()">Logout<img src="assets/logout.svg"></button>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="topnav-right collapse navbar-collapse justify-content-end" id="navbarCollapse">
-          <ul class="navbar-nav  ml-auto">
-              <a class="nav-link nav-item" *ngIf="!_auth.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
-              <a class="nav-link nav-item" *ngIf="!_auth.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
-              <a class="nav-link nav-item" style="cursor:pointer" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()" >Log Out</a>
-          </ul>  
-       </div>
-    </div>
-  </nav>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
       <ul class="navbar-nav mr-auto">

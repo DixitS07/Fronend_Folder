@@ -1,20 +1,4 @@
-body {
-  height: 1000%;
-  margin: 0;
-}
-mat-drawer{
-  width: 150px;
-  text-align:start;
-  background-color:#EAEFF2;
-  color: black;
-}
-li{
-  padding-left:20px;
-}
-mat-drawer-content{
-  padding: 10px;
-}
- 
+
 
 
 
