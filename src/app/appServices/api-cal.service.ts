@@ -10,7 +10,7 @@ export class ApiCalService {
   constructor(private http:HttpClient) { }
 
   StudentList():Observable<any>{
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
+    return this.http.get('http://localhost:3000/api/studentList');
   }
 
 }

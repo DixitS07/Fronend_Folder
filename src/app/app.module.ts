@@ -59,7 +59,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatSidenavModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    
     
     
   ],

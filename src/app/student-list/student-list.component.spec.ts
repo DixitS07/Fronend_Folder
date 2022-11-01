@@ -10,6 +10,8 @@ describe('StudentListComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ StudentListComponent ]
     })
+
+    
     .compileComponents();
 
     fixture = TestBed.createComponent(StudentListComponent);
