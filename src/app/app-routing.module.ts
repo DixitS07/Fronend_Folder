@@ -34,11 +34,13 @@ const routes: Routes = [
   },
   {
     path:'studentRegistration',
-    component:StudentRegistrationComponent
+    component:StudentRegistrationComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'studentList',
     component:StudentListComponent
+   
   }
 ];
 
