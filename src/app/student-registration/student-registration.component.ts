@@ -38,16 +38,16 @@ export class StudentRegistrationComponent implements OnInit {
     this.selectedFile = event.target.files[0]
   }
 
-  registerUser(){
+  registerstudent(){
     this.progress= true
     // console.log(this.registerdUserData)
     let formdata = new FormData();
     // formdata.append('firstName',this.myReactiveForm.get('firstName').value)
     // formdata.append('file',this.selectedFile)
-    this._authservice.registeredUser(this.myReactiveForm.value).subscribe((res:any)=>{
+    this._authservice.registeredStudent(this.myReactiveForm.value).subscribe((res:any)=>{
       console.log(res)
       this.progress=false
-      localStorage.setItem('token', res.token)
+      // localStorage.setItem('token', res.token)
       this._router.navigate(['/special'])
     },
      (err)=>{
