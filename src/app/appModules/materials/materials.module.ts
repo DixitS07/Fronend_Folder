@@ -23,6 +23,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 const Materials=[
@@ -50,6 +51,7 @@ const Materials=[
   // MatPaginator,
   MatSortModule,
   MatSnackBarModule,
+  MatDialogModule,
   
 ]
 

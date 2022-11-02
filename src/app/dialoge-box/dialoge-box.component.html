@@ -1,0 +1,39 @@
+<form [formGroup]="myReactiveForm" (ngSubmit)="editStudent()">
+    <!-- <div class="mb-3">
+      <label class="form-label">Profile Photo</label>
+      <input type="file" class="form-control"  (change)="getFile($event)"
+      formControlName="photo">
+    </div>  -->
+    <div class="mb-3">
+      <label class="form-label">First Name</label>
+      <input type="text" class="form-control" formControlName="firstName">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Last Name</label>
+      <input type="text" class="form-control" formControlName="lastName">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Age</label>
+      <input type="number" class="form-control" formControlName="age">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Phone</label>
+      <input type="number" class="form-control" formControlName="phone">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Address</label>
+      <input type="Texarea" class="form-control" formControlName="address">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="password">
+    </div>
+    
+    <button class="btn btn-primary" (click)="openSnackBar()">Update</button>
+
+  </form>
+  

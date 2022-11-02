@@ -48,12 +48,14 @@ export class StudentRegistrationComponent implements OnInit {
       console.log(res)
       this.progress=false
       // localStorage.setItem('token', res.token)
-      this._router.navigate(['/special'])
+      this._router.navigate(['/studentList'])
     },
      (err)=>{
       console.log(err)
       this.progress=false
     })
   }
+
+ 
 
 }

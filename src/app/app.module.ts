@@ -24,6 +24,7 @@ import { StudentListComponent } from './student-list/student-list.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { DialogeBoxComponent } from './dialoge-box/dialoge-box.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {MatSortModule} from '@angular/material/sort';
     SpecialEventComponent,
     StudentRegistrationComponent,
     DashboardComponent,
-    StudentListComponent
+    StudentListComponent,
+    DialogeBoxComponent
   ],
   imports: [
     BrowserModule,

@@ -13,5 +13,24 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  title = 'thirdproject';
+  hidden = false;
+  sidenav:any =true;
+  menuicon:any = false;
+  panelOpenState = false;
+
+  
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+  sidenavToggle(){
+    this.menuicon=true
+    this.sidenav=false
+  }
+sidenavToggler(){
+    this.menuicon=false
+    this.sidenav=true
+  }
+
 
 }
