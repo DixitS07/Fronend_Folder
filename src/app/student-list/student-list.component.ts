@@ -4,7 +4,9 @@ import { ApiCalService } from '../appServices/api-cal.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
-
+import {Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogeBoxComponent } from '../dialoge-box/dialoge-box.component';
 
 @Component({
   selector: 'app-student-list',
@@ -14,14 +16,15 @@ import {MatSort, Sort} from '@angular/material/sort';
 export class StudentListComponent implements OnInit, AfterViewInit {
 
   dataSource:any =[]
+  sIdvar:any;
 
 
   constructor(private apicall:ApiCalService,
-              private _liveAnnouncer: LiveAnnouncer ) { }
+              private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog ) { }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'age', 'email','phone','address'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'age', 'email','phone','address','actions'];
 
 
 
@@ -29,7 +32,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
 
     this.apicall.StudentList().subscribe((data)=>{
       this.dataSource=new MatTableDataSource(data);
-      console.log(this.dataSource,'data1')
+      console.log(this.dataSource._data.value,'data1')
     })
   }
   applyFilter(event: Event) {
@@ -49,4 +52,17 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+
+  openDialog(elid:any): void {
+    console.log(elid,'from slist')
+    // this.sIdvar = elid
+    const dialogRef = this.dialog.open(DialogeBoxComponent, {
+      width: '750px',
+      height:'750px',
+      data:elid
+    });
+    
+  }
 }
+
+

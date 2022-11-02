@@ -42,6 +42,10 @@ const routes: Routes = [
     component:StudentListComponent,
     canActivate:[AuthGuard]
    
+  },
+  {
+    path:'**',
+    redirectTo:'/login'
   }
 ];
 
