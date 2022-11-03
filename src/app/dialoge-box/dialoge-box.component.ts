@@ -19,8 +19,7 @@ export class DialogeBoxComponent implements OnInit {
 
   constructor( public dialogRef: MatDialogRef<DialogeBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any, private fb:FormBuilder,private _snackBar: MatSnackBar,private _apical:ApiCalService ) {
-      console.log(data,'from dialog')
-      this.sIdvar = data
+      console.log(data,'coming from slist to dialog')
     }
 
   onNoClick(): void {
@@ -41,7 +40,7 @@ export class DialogeBoxComponent implements OnInit {
     })
   }
   editStudent(){  
-   console.log(this.sIdvar,'from dialogcomp')
+   console.log(this.data,'from dialogcomp')
    console.log('edit api call')  
   }
   

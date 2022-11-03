@@ -7,6 +7,7 @@ import {MatSort, Sort} from '@angular/material/sort';
 import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogeBoxComponent } from '../dialoge-box/dialoge-box.component';
+import { DeletedialogComponent } from './deletedialog/deletedialog.component';
 
 @Component({
   selector: 'app-student-list',
@@ -62,6 +63,15 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       data:elid
     });
     
+  }
+
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,elid:any): void {
+    this.dialog.open(DeletedialogComponent, {
+      width: '250px',
+      data:elid,
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }
 

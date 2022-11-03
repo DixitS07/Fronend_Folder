@@ -25,6 +25,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { DialogeBoxComponent } from './dialoge-box/dialoge-box.component';
+import { DeletedialogComponent } from './student-list/deletedialog/deletedialog.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { DialogeBoxComponent } from './dialoge-box/dialoge-box.component';
     StudentRegistrationComponent,
     DashboardComponent,
     StudentListComponent,
-    DialogeBoxComponent
+    DialogeBoxComponent,
+    DeletedialogComponent
   ],
   imports: [
     BrowserModule,
