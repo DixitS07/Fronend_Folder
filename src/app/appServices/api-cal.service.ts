@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -14,5 +14,13 @@ export class ApiCalService {
     return this.http.get('http://localhost:3000/api/studentList');
   }
   
+  DeleteRow(id:any):Observable<any>{
+    let params = new HttpParams({
+      fromObject:{
+        _id:id
+      }
+    })
+    return this.http.delete('http//localhost:3000/api/delete',{params:params})
+  }
 }
 

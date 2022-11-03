@@ -40,7 +40,7 @@ export class StudentRegistrationComponent implements OnInit {
 
   registerstudent(){
     this.progress= true
-    // console.log(this.registerdUserData)
+    console.log(this.myReactiveForm.value)
     let formdata = new FormData();
     // formdata.append('firstName',this.myReactiveForm.get('firstName').value)
     // formdata.append('file',this.selectedFile)
