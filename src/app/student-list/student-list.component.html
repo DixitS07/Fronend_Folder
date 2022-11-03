@@ -45,10 +45,10 @@
       <!-- Actions column -->
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Sort by symbol"> Action </th>
-        <td mat-cell *matCellDef="let element" #ele> <img src="assets\more.svg" [matMenuTriggerFor]="menu">{{element._id}}
+        <td mat-cell *matCellDef="let element" #ele> <img src="assets\more.svg" [matMenuTriggerFor]="menu">
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="openDialog(element)">Edit</button>
-          <button mat-menu-item>Delete</button>
+          <button mat-menu-item (click)="openDeleteDialog('0ms', '0ms',element)">Delete</button>
         </mat-menu></td>
       </ng-container>
 
