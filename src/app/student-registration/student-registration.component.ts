@@ -17,9 +17,7 @@ export class StudentRegistrationComponent implements OnInit {
   myReactiveForm!:FormGroup;
   progress:boolean=false;
 
-  openSnackBar() {
-    this._snackBar.open('Form Is Submitted', 'Close');
-  }
+ 
 
   ngOnInit(): void {
     this.myReactiveForm = this.fb.group({
@@ -46,6 +44,9 @@ export class StudentRegistrationComponent implements OnInit {
     // formdata.append('file',this.selectedFile)
     this._authservice.registeredStudent(this.myReactiveForm.value).subscribe((res:any)=>{
       console.log(res)
+      this._snackBar.open('Form Is Submitted', 'Close',{
+        duration: 1000
+      })
       this.progress=false
       // localStorage.setItem('token', res.token)
       this._router.navigate(['/studentList'])
@@ -53,6 +54,9 @@ export class StudentRegistrationComponent implements OnInit {
      (err)=>{
       console.log(err)
       this.progress=false
+      this._snackBar.open('Form Is Not Submitted', 'Close',{
+        duration: 1000
+      })
     })
   }
 

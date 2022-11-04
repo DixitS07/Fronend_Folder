@@ -16,7 +16,7 @@ export class ApiCalService {
   
   DeleteRow(id:any):Observable<any>{
     let params = new HttpParams({
-      fromObject:{
+      fromObject: {
         _id:id
       }
     })
@@ -31,4 +31,5 @@ export class ApiCalService {
     return this.http.put('http://localhost:3000/api/student-register',{params:params})
   }
 }
+
 
