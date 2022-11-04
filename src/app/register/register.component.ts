@@ -13,7 +13,11 @@ export class RegisterComponent implements OnInit {
               private _router: Router) { }
 
   ngOnInit(): void {
+    if (this._auth.loggedIn()) {
+      this._router.navigate(['/events'])
   }
+  }
+  
   registerUSer(){
     this._auth.registeredUser(this.registerUSerData).subscribe(
       (res:any)=>{console.log(res)
