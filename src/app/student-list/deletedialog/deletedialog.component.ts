@@ -22,7 +22,9 @@ export class DeletedialogComponent implements OnInit {
     this._apical.DeleteRow(this.data._id).subscribe((res)=>
     {console.log(res)},
     (err)=>{console.log(err)})
-    this._snackBar.open('Data Is Deleted', 'Close');
+    this._snackBar.open('Data Is Deleted', 'Close',{
+      duration: 1000
+    });
   }
   
 }

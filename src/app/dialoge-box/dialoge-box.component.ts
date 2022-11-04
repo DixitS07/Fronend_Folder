@@ -41,11 +41,18 @@ export class DialogeBoxComponent implements OnInit {
   }
   editStudent(){  
    console.log(this.data,'from dialogcomp')
-   console.log('edit api call')  
+   console.log('edit api call')
+   this._apical.EditRow(this.data._id).subscribe((err)=>{
+    console.log(err)
+   },(res)=>{
+    console.log(res)
+   })  
   }
   
   openSnackBar() {
-    this._snackBar.open('Form Is Updated', 'Close');
+    this._snackBar.open('Form Is Updated', 'Close',{
+      duration: 3000
+    });
   }
 
 }
