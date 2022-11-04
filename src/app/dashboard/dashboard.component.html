@@ -10,14 +10,9 @@
     <mat-icon>share</mat-icon>
   </button>
 </mat-toolbar>
-
-
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" [opened]="sidenav">
-      
-      
-      <div class="drawer">
-        
+      <div class="drawer">      
         <div class="item-1">
           <div class="itembox">
             <div class="itemfinal">
@@ -59,10 +54,8 @@
             <p>Student List</p>
           </div>
         </a>
-      </div>
-  
+      </div> 
     </mat-drawer>
-  
     <mat-drawer-content>
       <mat-icon *ngIf="menuicon" fontIcon="menu" (click)="sidenavToggler()">menu</mat-icon>
       <div>
