@@ -1,33 +1,34 @@
+<div class="body">
 <mat-toolbar color="accent">
   <span class="example-spacer"></span>
   <span>Dashboard</span>
-  <button mat-raised-button >Profile</button>
+  <!-- <button mat-raised-button >Profile</button> -->
   <button mat-raised-button  (click)="_auth.logoutUser()">Logout &nbsp;<img src="assets/logout.svg"></button>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-  <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
 </mat-toolbar>
 
 
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" [opened]="sidenav">
-      
-      
-      <div class="drawer">
-        
+      <div class="drawer">   
         <div class="item-1">
           <div class="itembox">
             <div class="itemfinal">
-              <mat-icon *ngIf="!menuicon" fontIcon="menu_open" (click)="sidenavToggle()">menu_open</mat-icon>
-              
+              <svg class="svgclass" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M6 36v-3h36v3Zm0-10.5v-3h36v3ZM6 15v-3h36v3Z"/></svg>
             </div>
           </div>
         </div>
   
         <mat-divider></mat-divider>
+        <a routerLinkActive="active" routerLink="/events">
+          <div class="item-1">
+            <div class="itembox">
+              <div class="itemfinal">
+                <svg class="svgclass" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M29.85 37q-2.05 0-3.45-1.4-1.4-1.4-1.4-3.45 0-2.05 1.4-3.45 1.4-1.4 3.45-1.4 2.05 0 3.45 1.4 1.4 1.4 1.4 3.45 0 2.05-1.4 3.45-1.4 1.4-3.45 1.4ZM9 44q-1.2 0-2.1-.9Q6 42.2 6 41V10q0-1.2.9-2.1Q7.8 7 9 7h3.25V4h3.25v3h17V4h3.25v3H39q1.2 0 2.1.9.9.9.9 2.1v31q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V19.5H9V41Zm0-24.5h30V10H9Zm0 0V10v6.5Z"/></svg>
+              </div>
+            </div>
+            <p>Events</p>
+          </div>
+        </a>
         <a routerLinkActive="active" routerLink="/special">
           <div class="item-1">
             <div class="itembox">
@@ -70,7 +71,7 @@
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
-  
+</div>
   
   
   
