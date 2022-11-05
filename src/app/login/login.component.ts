@@ -9,6 +9,8 @@ import { AuthService } from '../appServices/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+
 export class LoginComponent implements OnInit {
  errormsg:any={}
   loginUSerData:any={}
@@ -17,6 +19,9 @@ export class LoginComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    if (this._auth.loggedIn()) {
+      this._router.navigate(['/events'])
+  }
   }
   loginUSer(){
     this._auth.loggedUser(this.loginUSerData).subscribe(

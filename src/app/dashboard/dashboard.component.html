@@ -5,8 +5,6 @@
   <!-- <button mat-raised-button >Profile</button> -->
   <button mat-raised-button  (click)="_auth.logoutUser()">Logout &nbsp;<img src="assets/logout.svg"></button>
 </mat-toolbar>
-
-
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" [opened]="sidenav">
       <div class="drawer">   
@@ -60,10 +58,8 @@
             <p>Student List</p>
           </div>
         </a>
-      </div>
-  
+      </div> 
     </mat-drawer>
-  
     <mat-drawer-content>
       <mat-icon *ngIf="menuicon" fontIcon="menu" (click)="sidenavToggler()">menu</mat-icon>
       <div>

@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthService } from './appServices/auth.service';
 import { AuthGuard } from './auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventsComponent } from './events/events.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -8,11 +10,12 @@ import { SpecialEventComponent } from './special-event/special-event.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 
+
 const routes: Routes = [
   {
     path:'',
     redirectTo:'/login',
-    pathMatch:'full'
+    pathMatch:'full',
   },
   {
     path:'events',
@@ -26,7 +29,7 @@ const routes: Routes = [
   },
   {
     path:'login',
-    component:LoginComponent
+    component:LoginComponent,
   },
   {
     path:'register',
@@ -37,9 +40,10 @@ const routes: Routes = [
     component:StudentRegistrationComponent,
     canActivate:[AuthGuard]
   },
+  
   {
-    path:'studentList',
-    component:StudentListComponent,
+    path:'dashboard',
+    component:DashboardComponent,
     canActivate:[AuthGuard]
    
   },
