@@ -40,10 +40,15 @@ const routes: Routes = [
     component:StudentRegistrationComponent,
     canActivate:[AuthGuard]
   },
-  
   {
     path:'dashboard',
     component:DashboardComponent,
+    canActivate:[AuthGuard]
+   
+  },
+  {
+    path:'studentList',
+    component:StudentListComponent,
     canActivate:[AuthGuard]
    
   },
