@@ -43,25 +43,22 @@ export class DialogeBoxComponent implements OnInit {
   editStudent(){  
    console.log(this.data,'from dialogcomp')
    console.log('edit api call')
-   this._apical.EditRow(this.myReactiveForm.value).subscribe((err)=>{
+   this._apical.EditRow(this.myReactiveForm.value).subscribe((res)=>{
+    console.log(res,'hello from servr')
+   this._snackBar.open('Data Is Updated', 'Close',{
+     duration: 1000
+   })
+   window.location.reload();
+  }, 
+(err)=>{
     this._snackBar.open('Data Is Not Updated', 'Close',{
       duration: 1000
     })
     window.location.reload();
     console.log(err)
-   },(res)=>{
-     console.log(res,'hello from servr')
-    this._snackBar.open('Data Is Updated', 'Close',{
-      duration: 1000
-    })
-    window.location.reload();
-   })  
-  }
+   }) 
+   }
   
-  openSnackBar() {
-    this._snackBar.open('Form Is Updated', 'Close',{
-      duration: 3000
-    });
-  }
+ 
 
 }
