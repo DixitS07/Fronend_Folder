@@ -30,6 +30,7 @@ export class DialogeBoxComponent implements OnInit {
     
     this.myReactiveForm = this.fb.group({
       // 'photo': [''],
+      '_id':[this.data._id],
       'firstName':[this.data.firstName,Validators.required],
       'lastName': [this.data.lastName],
       'age':[this.data.age],
@@ -41,11 +42,26 @@ export class DialogeBoxComponent implements OnInit {
   }
   editStudent(){  
    console.log(this.data,'from dialogcomp')
-   console.log('edit api call')  
+   console.log('edit api call')
+   this._apical.EditRow(this.myReactiveForm.value).subscribe((err)=>{
+    this._snackBar.open('Data Is Not Updated', 'Close',{
+      duration: 1000
+    })
+    window.location.reload();
+    console.log(err)
+   },(res)=>{
+     console.log(res,'hello from servr')
+    this._snackBar.open('Data Is Updated', 'Close',{
+      duration: 1000
+    })
+    window.location.reload();
+   })  
   }
   
   openSnackBar() {
-    this._snackBar.open('Form Is Updated', 'Close');
+    this._snackBar.open('Form Is Updated', 'Close',{
+      duration: 3000
+    });
   }
 
 }

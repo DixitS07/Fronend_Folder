@@ -24,7 +24,6 @@ export class AuthService {
     //  let myheaders = new HttpHeaders({
     //   'Content-Type':'application/json'
     // })
-    console.log('http')
      return this.http.post('http://localhost:3000/api/student-register',student)
   }
 
