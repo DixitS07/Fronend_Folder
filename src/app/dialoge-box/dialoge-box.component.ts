@@ -30,8 +30,6 @@ export class DialogeBoxComponent implements OnInit {
   ngOnInit(): void {
     
     this.myReactiveForm = this.fb.group({
-      // 'photo': [''],
-      '_id':[this.data._id],
       'firstName':[this.data.firstName,Validators.required],
       'lastName': [this.data.lastName],
       'age':[this.data.age],
@@ -55,10 +53,10 @@ export class DialogeBoxComponent implements OnInit {
     formdata.append('phone',form.phone)
     formdata.append('address',form.address)
     formdata.append('password',form.password) 
-   this._apical.EditRow(formdata).subscribe((res)=>{
-    console.log(res,'hello from servr')
+   this._apical.EditRow(formdata,this.data._id).subscribe((res)=>{
+    console.log(res,'hello response from servr')
    this._snackBar.open('Data Is Updated', 'Close',{
-     duration: 1000
+     duration: 500
    })
    window.location.reload();
   }, 
