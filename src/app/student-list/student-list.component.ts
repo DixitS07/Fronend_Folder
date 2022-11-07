@@ -33,7 +33,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
 
     this.apicall.StudentList().subscribe((data)=>{
       this.dataSource=new MatTableDataSource(data);
-      console.log(this.dataSource._data.value,'data1')
+      // console.log(this.dataSource._data.value,'data1')
     })
   }
   applyFilter(event: Event) {

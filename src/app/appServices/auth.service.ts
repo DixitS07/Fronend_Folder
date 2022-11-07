@@ -38,8 +38,8 @@ export class AuthService {
     return !! localStorage.getItem('token')
   }
   logoutUser(){
-    return localStorage.removeItem('token')
     this._router.navigate(['/login'])
+    return localStorage.removeItem('token')
 
   }
   getToken(){

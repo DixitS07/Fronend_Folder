@@ -58,13 +58,13 @@ mat-drawer{
   padding: 10px;
   text-align: center;
   color: white;
-  text-decoration: none;
+  text-decoration:none;
   font-size: smaller;
 }
 .item-1:hover{
-  /* border-right: 2px solid rgb(255, 255, 255); */
-  /* color:orangered; */
-  background-color: red;
+  /* border-right: 0.1px solid rgb(0, 0, 0); */
+  border-radius: 6px;
+  background-color: rgba(254, 84, 33, 0.407);
 }
 .itembox{
   width: 35px;
@@ -85,8 +85,9 @@ mat-drawer{
 }
 .itemfinal{
   color: #fbfbfb;
-  display: flex;
-    align-items: center;
+  /* display: flex; */
+  align-items:center;
+  justify-content: center;
 }
 .svgclass{
     fill: currentColor;
