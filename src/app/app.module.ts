@@ -40,7 +40,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DashboardComponent,
     StudentListComponent,
     DialogeBoxComponent,
-    DeletedialogComponent
+    DeletedialogComponent,
   ],
   imports: [
     BrowserModule,
