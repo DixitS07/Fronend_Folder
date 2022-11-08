@@ -21,6 +21,7 @@ export class StudentRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.myReactiveForm = this.fb.group({
+      'photo': [''],
       'firstName':[null,Validators.required],
       'lastName': [''],
       'age':[''],
