@@ -1,0 +1,8 @@
+mat-form-field,.filediv,.regbtn {
+    margin: 12px;
+    width: 400px;
+  }
+.btn{
+  width:400px;
+  justify-content: center;
+}

@@ -1,6 +1,11 @@
-mat-form-field {
-    margin-right: 12px;
+mat-form-field,.filediv,.regbtn {
+    margin: 12px;
+    width: 400px;
   }
+.btn{
+  width:400px;
+  justify-content: center;
+}
 .example-card {
   max-width: 1000px;
   border-radius: 6px;
@@ -9,8 +14,5 @@ mat-form-field {
 mat-divider{
 margin-bottom: 6px;
 }
-.formdiv{
-  display: flex;
-  flex-direction: row;
-}
+
   
