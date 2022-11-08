@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { ApiCalService } from '../appServices/api-cal.service';
 import {MatTableDataSource} from '@angular/material/table';
@@ -8,6 +8,9 @@ import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogeBoxComponent } from '../dialoge-box/dialoge-box.component';
 import { DeletedialogComponent } from './deletedialog/deletedialog.component';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-student-list',
@@ -25,7 +28,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'age', 'email','phone','address','actions'];
+  displayedColumns: string[] = ['photo','firstName', 'lastName', 'age', 'email','phone','address','actions'];
 
 
 
@@ -73,6 +76,21 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       exitAnimationDuration,
     });
   }
+
+
+
+makePdf() {
+
+  var element = document.getElementById('pdfTable')as HTMLImageElement
+  html2canvas(element).then(canvas => {
+    // console.log(canvas);
+  const contentDataURL = canvas.toDataURL('image/png')
+  let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+  var width = pdf.internal.pageSize.getWidth();
+  var height = canvas.height * width / canvas.width;
+  pdf.addImage(contentDataURL, 'PNG', 0, 0, width, height)
+  pdf.save('output.pdf'); // Generated PDF
+  });
+  // let PdfFile = document.getElementById('pdfTable').contentWindow;
+  }
 }
-
-

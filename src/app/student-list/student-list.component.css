@@ -15,3 +15,7 @@ th {
 th.mat-sort-header-sorted {
   color: black;
 }
+
+.btn{
+  align-content: center;
+}

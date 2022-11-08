@@ -4,11 +4,11 @@
       <mat-divider></mat-divider>
       <mat-card-content>
         <form [formGroup]="myReactiveForm" (ngSubmit)="registerstudent()">
-          <!-- <div class="mb-3">
+          <div class="mb-3">
             <label class="form-label">Profile Photo</label>
-            <input type="file" class="form-control"  (change)="getFile($event)"
+            <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg" (change)="getFile($event)"
             formControlName="photo">
-          </div>  -->
+          </div> 
           <div class="mb-3">
             <label class="form-label">First Name</label>
             <input type="text" class="form-control" formControlName="firstName">
