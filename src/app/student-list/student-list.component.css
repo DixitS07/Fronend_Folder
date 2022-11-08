@@ -20,6 +20,17 @@ svg{
   width: 24px;
 }
 
-.btn{
-  align-content: center;
+button{
+  align-content:flex-end;
+  margin-left:15px;
+  margin-top: 15px;
+}
+.tabletop{
+  display: flex;
+  flex-direction: row;
+}
+.searchbar{
+  width:50%;
+  margin:5px;
+  color: white;
 }
