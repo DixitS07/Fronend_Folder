@@ -6,7 +6,8 @@
         <form [formGroup]="myReactiveForm" (ngSubmit)="registerstudent()">
           <div class="filediv">
             <label>Profile Photo</label>
-            <input type="file" class="form-control"  (change)="getFile($event)">
+            <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg" (change)="getFile($event)"
+            formControlName="photo">
           </div>
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
