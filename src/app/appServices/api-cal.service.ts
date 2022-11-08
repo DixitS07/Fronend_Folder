@@ -22,11 +22,11 @@ export class ApiCalService {
     })
     return this.http.delete('http://localhost:3000/api/delete',{params:params})
   }
-  EditRow(updatedData:any):Observable<any>{
-    console.log(updatedData)
+  EditRow(updatedData:any,id:any):Observable<any>{
+    // console.log(updatedData,id)
     let params = new HttpParams({
       fromObject:{
-        _id:updatedData._id
+        _id:id
       }
     })
     return this.http.put('http://localhost:3000/api/student-register',updatedData,{params:params})

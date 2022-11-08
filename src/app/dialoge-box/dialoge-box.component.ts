@@ -16,6 +16,7 @@ export class DialogeBoxComponent implements OnInit {
 
   myReactiveForm!:FormGroup;
   sIdvar:any;
+  selectedFile!:File;
 
   constructor( public dialogRef: MatDialogRef<DialogeBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any, private fb:FormBuilder,private _snackBar: MatSnackBar,private _apical:ApiCalService ) {
@@ -29,8 +30,6 @@ export class DialogeBoxComponent implements OnInit {
   ngOnInit(): void {
     
     this.myReactiveForm = this.fb.group({
-      // 'photo': [''],
-      '_id':[this.data._id],
       'firstName':[this.data.firstName,Validators.required],
       'lastName': [this.data.lastName],
       'age':[this.data.age],
@@ -40,13 +39,24 @@ export class DialogeBoxComponent implements OnInit {
       'password':[this.data.password],
     })
   }
-  editStudent(){  
-   console.log(this.data,'from dialogcomp')
-   console.log('edit api call')
-   this._apical.EditRow(this.myReactiveForm.value).subscribe((res)=>{
-    console.log(res,'hello from servr')
+  getFile(event:any){
+    this.selectedFile = event.target.files[0]
+  }
+  editStudent(){ 
+    let form = this.myReactiveForm.value
+    let formdata = new FormData();
+    formdata.append('photo',this.selectedFile)
+    formdata.append('firstName',form.firstName)
+    formdata.append('lastName',form.lastName)
+    formdata.append('age',form.age)
+    formdata.append('email',form.email)
+    formdata.append('phone',form.phone)
+    formdata.append('address',form.address)
+    formdata.append('password',form.password) 
+   this._apical.EditRow(formdata,this.data._id).subscribe((res)=>{
+    console.log(res,'hello response from servr')
    this._snackBar.open('Data Is Updated', 'Close',{
-     duration: 1000
+     duration: 500
    })
    window.location.reload();
   }, 

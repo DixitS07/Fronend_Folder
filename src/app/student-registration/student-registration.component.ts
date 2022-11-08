@@ -13,7 +13,7 @@ import { AuthService } from '../appServices/auth.service';
 export class StudentRegistrationComponent implements OnInit {
   constructor(private _authservice:AuthService, private _router:Router, private fb:FormBuilder, private _snackBar: MatSnackBar) { }
   registerdUserData:any={}
-  selectedFile:any;
+  selectedFile!:File;
   myReactiveForm!:FormGroup;
   progress:boolean=false;
 
@@ -38,11 +38,18 @@ export class StudentRegistrationComponent implements OnInit {
 
   registerstudent(){
     this.progress= true
-    console.log(this.myReactiveForm.value)
+    // console.log(this.myReactiveForm.value)
+    let form = this.myReactiveForm.value
     let formdata = new FormData();
-    // formdata.append('firstName',this.myReactiveForm.get('firstName').value)
-    // formdata.append('file',this.selectedFile)
-    this._authservice.registeredStudent(this.myReactiveForm.value).subscribe((res:any)=>{
+    formdata.append('photo',this.selectedFile)
+    formdata.append('firstName',form.firstName)
+    formdata.append('lastName',form.lastName)
+    formdata.append('age',form.age)
+    formdata.append('email',form.email)
+    formdata.append('phone',form.phone)
+    formdata.append('address',form.address)
+    formdata.append('password',form.password)
+    this._authservice.registeredStudent(formdata).subscribe((res:any)=>{
       console.log(res)
       this._snackBar.open('Form Is Submitted', 'Close',{
         duration: 1000
