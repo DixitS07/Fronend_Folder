@@ -4,12 +4,12 @@ import { ApiCalService } from '../appServices/api-cal.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
-import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogeBoxComponent } from '../dialoge-box/dialoge-box.component';
 import { DeletedialogComponent } from './deletedialog/deletedialog.component';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 
 
 @Component({
@@ -20,6 +20,7 @@ import html2canvas from 'html2canvas';
 export class StudentListComponent implements OnInit, AfterViewInit {
 
   dataSource:any =[]
+  csvData:any=[]
   sIdvar:any;
 
 
@@ -35,6 +36,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     this.apicall.StudentList().subscribe((data)=>{
+      this.csvData = data
       this.dataSource=new MatTableDataSource(data);
       // console.log(this.dataSource._data.value,'data1')
     })
@@ -93,4 +95,20 @@ makePdf() {
   });
   // let PdfFile = document.getElementById('pdfTable').contentWindow;
   }
+  onExportCsv(){
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true, 
+      showTitle: true,
+      title: 'User Data',
+      useBom: true,
+      noDownload: false,
+      headers: ["ID", "First Name", "Last Name",  "Age", "Email", "Phone", "Address","password","photo"]
+    };
+   
+    new ngxCsv(this.csvData, "reportcsv", options);
+  }
+
 }

@@ -1,10 +1,14 @@
 <div class="mat-elevation-z8">
-  <div>
-    <div style="float: left; width: 50%"> <mat-form-field appearance="standard">
+  <div class="tabletop">
+    <div class="searchbar">
+      <mat-form-field appearance="standard">
       <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)"  #input>
     </mat-form-field></div>
-    <div style="float: right; width: 50%"><button type="button" class="float-end btn btn-danger" (click)="makePdf()">PDF</button></div>
+    <div>
+      <button mat-raised-button (click)="makePdf()">Export As PDF</button>
+      <button mat-raised-button (click)="onExportCsv()">Export As CSV</button>
+    </div>
 </div>
    
 <div id="pdfTable" #pdfTable>
