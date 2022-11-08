@@ -8,6 +8,7 @@ import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogeBoxComponent } from '../dialoge-box/dialoge-box.component';
 import { DeletedialogComponent } from './deletedialog/deletedialog.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-student-list',
@@ -53,7 +54,13 @@ export class StudentListComponent implements OnInit, AfterViewInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
-
+  openProfile(ele:any){
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      width: '750px',
+      height:'750px',
+      data:ele
+    });
+  }
   openDialog(elid:any): void {
     console.log(elid,'from slist')
     // this.sIdvar = elid

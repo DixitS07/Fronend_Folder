@@ -22,9 +22,9 @@ export class StudentRegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.myReactiveForm = this.fb.group({
       'firstName':[null,Validators.required],
-      'lastName': [''],
+      'lastName': ['',Validators.required],
       'age':[''],
-      'email':[null,Validators.email],
+      'email':[null,[Validators.email,Validators.required]],
       'phone': [''],
       'address': [''],
       'password':[''],

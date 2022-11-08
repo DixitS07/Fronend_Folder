@@ -9,5 +9,8 @@ mat-form-field {
 mat-divider{
 margin-bottom: 6px;
 }
-  
+.formdiv{
+  display: flex;
+  flex-direction: row;
+}
   

@@ -5,6 +5,7 @@ import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventsComponent } from './events/events.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { SpecialEventComponent } from './special-event/special-event.component';
 import { StudentListComponent } from './student-list/student-list.component';
@@ -49,6 +50,12 @@ const routes: Routes = [
   {
     path:'studentList',
     component:StudentListComponent,
+    canActivate:[AuthGuard]
+   
+  },
+  {
+    path:'profile',
+    component:ProfileComponent,
     canActivate:[AuthGuard]
    
   },

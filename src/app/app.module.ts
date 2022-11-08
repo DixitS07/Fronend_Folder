@@ -27,6 +27,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { DialogeBoxComponent } from './dialoge-box/dialoge-box.component';
 import { DeletedialogComponent } from './student-list/deletedialog/deletedialog.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DashboardComponent,
     StudentListComponent,
     DialogeBoxComponent,
-    DeletedialogComponent
+    DeletedialogComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

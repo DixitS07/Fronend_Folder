@@ -20,7 +20,7 @@ export class ApiCalService {
         _id:id
       }
     })
-    return this.http.delete('http://localhost:3000/api/delete',{params:params})
+    return this.http.delete('http://localhost:3000/api/student-register',{params:params})
   }
   EditRow(updatedData:any,id:any):Observable<any>{
     // console.log(updatedData,id)
