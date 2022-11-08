@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     this.hidden = !this.hidden;
   }
   sidenavToggle(){
-    this.menuicon=true
+    this.menuicon=true 
     this.sidenav=false
   }
 sidenavToggler(){
