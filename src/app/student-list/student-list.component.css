@@ -34,3 +34,7 @@ button{
   margin:5px;
   color: white;
 }
+
+.btnn{
+  float: inline-end;
+}
