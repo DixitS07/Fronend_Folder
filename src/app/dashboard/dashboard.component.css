@@ -67,7 +67,7 @@ mat-drawer {
   font-size: smaller;
 }
 
-.item-1:hover {
+.item-1:hover{
   /* border-right: 0.1px solid rgb(0, 0, 0); */
   border-radius: 6px;
   background-color: rgba(254, 84, 33, 0.407);
@@ -114,4 +114,8 @@ svg {
 .spsvg{
   height: 34px;
     width: 34px;
+}
+.active{
+  border-radius: 6px;
+  background-color: rgba(254, 84, 33, 0.407);
 }

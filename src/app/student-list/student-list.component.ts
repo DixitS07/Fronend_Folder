@@ -18,10 +18,10 @@ import { NgxSpinnerService } from "ngx-spinner";
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent implements OnInit,AfterViewInit {
 
   dataSource:any =[]
-  csvData:any=[]
+  fetchData:any=[]
   sIdvar:any;
   
   constructor(private apicall:ApiCalService,
@@ -38,19 +38,19 @@ export class StudentListComponent implements OnInit {
    
     this.spinner.show();
     this.apicall.StudentList().subscribe((data)=>{
-      this.csvData = data
+      this.fetchData = data
       this.dataSource=new MatTableDataSource(data);
       this.spinner.hide();
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      // console.log(this.dataSource._data.value,'data1')
+      // console.log(this.fetchData.length,this.fetchData,'data1')
     })
     
     
   }
-  // ngAfterViewInit() {
-  
-  // }
+  ngAfterViewInit() {
+    this.apicall.badgeCount.next(this.fetchData.length)
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -112,7 +112,7 @@ makePdf() {
       headers: ["ID", "First Name", "Last Name",  "Age", "Email", "Phone", "Address","password","photo"]
     };
    
-    new ngxCsv(this.csvData, "reportcsv", options);
+    new ngxCsv(this.fetchData, "reportcsv", options);
   }
 
 }
