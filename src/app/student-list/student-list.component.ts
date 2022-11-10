@@ -10,6 +10,7 @@ import { DeletedialogComponent } from './deletedialog/deletedialog.component';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -17,38 +18,42 @@ import { ngxCsv } from 'ngx-csv/ngx-csv';
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit, AfterViewInit {
+export class StudentListComponent implements OnInit {
 
   dataSource:any =[]
   csvData:any=[]
   sIdvar:any;
   
   constructor(private apicall:ApiCalService,
-    private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog ) { }
-    @ViewChild(MatPaginator) paginator!: MatPaginator;
-    @ViewChild(MatSort) sort!: MatSort;
-    
-    displayedColumns: string[] = ['photo','firstName', 'lastName', 'age', 'email','phone','address','actions'];
-    
-    
-    
-    ngOnInit(): void {
-      
-      this.apicall.StudentList().subscribe((data)=>{
-        this.csvData = data
-        console.log(this.csvData)
+              private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog,
+              private spinner: NgxSpinnerService) { }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  displayedColumns: string[] = ['photo','firstName', 'lastName', 'age', 'email','phone','address','actions'];
+
+
+
+  ngOnInit(): void {
+   
+    this.spinner.show();
+    this.apicall.StudentList().subscribe((data)=>{
+      this.csvData = data
       this.dataSource=new MatTableDataSource(data);
+      this.spinner.hide();
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      // console.log(this.dataSource._data.value,'data1')
     })
+    
+    
   }
+  // ngAfterViewInit() {
+  
+  // }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {

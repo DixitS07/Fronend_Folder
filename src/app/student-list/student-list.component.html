@@ -6,8 +6,8 @@
       <input matInput (keyup)="applyFilter($event)"  #input>
     </mat-form-field></div>
     <div>
-      <button mat-raised-button (click)="makePdf()">Export As PDF</button>
-      <button mat-raised-button (click)="onExportCsv()">Export As CSV</button>
+      <button class="btn btn-danger" (click)="makePdf()">Export As PDF</button>
+      <button class="btn btn-success"  (click)="onExportCsv()">Export As CSV</button>
     </div>
 </div>
    
@@ -77,5 +77,13 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 
+
+  <ngx-spinner>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <p>Loading...</p>
+    </div>
+  </div>
+</ngx-spinner>
 
   
