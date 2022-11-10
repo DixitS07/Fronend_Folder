@@ -100,8 +100,8 @@ makePdf() {
   // let PdfFile = document.getElementById('pdfTable').contentWindow;
   }
   onExportCsv(){
-    console.log(this.csvData,"CSV DATA")
-    this.csvData.forEach((element:any) => {
+    console.log(this.fetchData,"CSV DATA")
+    this.fetchData.forEach((element:any) => {
     delete element['_id'];
     delete element['photo']
     delete element['__v'];
