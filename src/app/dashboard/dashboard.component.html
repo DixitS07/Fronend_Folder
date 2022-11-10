@@ -62,9 +62,9 @@
           </div>
         </a>
         <a routerLinkActive="active" routerLink="/studentList">
-          <div class="item-1">
-            <div class="itembox">
-              <div class="itemfinal" matBadge="4" matBadgeSize="small" [matBadgeHidden]="hidden"
+        <div class="item-1">
+          <div class="itembox">
+              <div class="itemfinal" matBadge={{badgeCount}} matBadgeSize="small" [matBadgeHidden]="hidden"
                 (click)="toggleBadgeVisibility()" matBadgeColor="warn">
                 <svg class="spsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" height="48" width="48">
                   <path
