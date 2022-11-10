@@ -1,18 +1,53 @@
-mat-form-field,.filediv,.regbtn {
+mat-form-field{
     margin: 12px;
     width: 400px;
+  }
+  .regbtn{
+    margin: 12px;
+    width: 400px;
+    display: flex;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
   }
 .btn{
   width:400px;
   justify-content: center;
 }
+.form-photo{
+  width:0;
+  height:0;
+  z-index:-1;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+}
 .example-card {
   max-width: 1000px;
   border-radius: 6px;
   margin-top: 4px;
+  
 }
 mat-divider{
 margin-bottom: 6px;
 }
 
-  
+/* svg{
+  width:90px;
+  height: 90px;
+} */
+.filediv{
+  display: flex;
+  justify-content: center;
+  align-items:center ;
+}
+.filesvgdiv{
+  background-color: rgba(0, 255, 255, 0.819);
+  border-radius: 50px;
+  height: 100px;
+  width:100px;
+  display: flex;
+  margin:auto;
+  justify-content: center;
+  align-items:center ;
+}
