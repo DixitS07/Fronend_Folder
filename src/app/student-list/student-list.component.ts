@@ -100,6 +100,14 @@ makePdf() {
   // let PdfFile = document.getElementById('pdfTable').contentWindow;
   }
   onExportCsv(){
+    console.log(this.csvData,"CSV DATA")
+    this.csvData.forEach((element:any) => {
+    delete element['_id'];
+    delete element['photo']
+    delete element['__v'];
+    delete element['password'];
+      
+    });
     var options = { 
       fieldSeparator: ',',
       quoteStrings: '"',
@@ -109,7 +117,7 @@ makePdf() {
       title: 'User Data',
       useBom: true,
       noDownload: false,
-      headers: ["ID", "First Name", "Last Name",  "Age", "Email", "Phone", "Address","password","photo"]
+      headers: [ "First Name", "Last Name",  "Age", "Email", "Phone", "Address"]
     };
    
     new ngxCsv(this.fetchData, "reportcsv", options);
