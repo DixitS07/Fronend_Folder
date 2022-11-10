@@ -22,23 +22,22 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   dataSource:any =[]
   csvData:any=[]
   sIdvar:any;
-
-
+  
   constructor(private apicall:ApiCalService,
-              private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog ) { }
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  displayedColumns: string[] = ['photo','firstName', 'lastName', 'age', 'email','phone','address','actions'];
-
-
-
-  ngOnInit(): void {
-
-    this.apicall.StudentList().subscribe((data)=>{
-      this.csvData = data
+    private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog ) { }
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
+    
+    displayedColumns: string[] = ['photo','firstName', 'lastName', 'age', 'email','phone','address','actions'];
+    
+    
+    
+    ngOnInit(): void {
+      
+      this.apicall.StudentList().subscribe((data)=>{
+        this.csvData = data
+        console.log(this.csvData)
       this.dataSource=new MatTableDataSource(data);
-      // console.log(this.dataSource._data.value,'data1')
     })
   }
   applyFilter(event: Event) {
