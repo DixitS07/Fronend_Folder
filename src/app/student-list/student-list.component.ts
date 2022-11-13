@@ -39,6 +39,7 @@ export class StudentListComponent implements OnInit,AfterViewInit {
     this.spinner.show();
     this.apicall.StudentList().subscribe((data)=>{
       this.fetchData = data
+    this.apicall.badgeCount.next(this.fetchData.length)
       this.dataSource=new MatTableDataSource(data);
       this.spinner.hide();
       this.dataSource.paginator = this.paginator;
@@ -49,7 +50,6 @@ export class StudentListComponent implements OnInit,AfterViewInit {
     
   }
   ngAfterViewInit() {
-    this.apicall.badgeCount.next(this.fetchData.length)
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
