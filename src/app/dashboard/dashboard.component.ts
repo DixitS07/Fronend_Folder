@@ -11,25 +11,20 @@ import { AuthService } from '../appServices/auth.service';
 export class DashboardComponent implements OnInit {
   badgeCount:any=0;
   constructor(public _auth:AuthService,private _apicall:ApiCalService ) { 
-    this._apicall.badgeCount.subscribe(count=>{
-      this.badgeCount=count
-      // console.log(this.badgeCount,count)
-    })
+    
   }
 
   ngOnInit(): void {
-   
+   let name= this._apicall.badgeCount.subscribe(count=>{
+      this.badgeCount=count
+      name.unsubscribe()
+      console.log(this.badgeCount,count)
+    })
   }
-  title = 'thirdproject';
-  hidden = false;
   sidenav:any =true;
   menuicon:any = false;
-  panelOpenState = false;
   
-  
-  toggleBadgeVisibility() {
-    this.hidden = !this.hidden;
-  }
+
   sidenavToggle(){
     this.menuicon=true 
     this.sidenav=false

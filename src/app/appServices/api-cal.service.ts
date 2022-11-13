@@ -12,6 +12,7 @@ export class ApiCalService {
   
   badgeCount = new Subject<any>()
   StudentList():Observable<any>{
+    console.log(this.badgeCount)
     return this.http.get('http://localhost:3000/api/studentList');
   }
   
