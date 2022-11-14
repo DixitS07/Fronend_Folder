@@ -28,6 +28,7 @@ import { DialogeBoxComponent } from './dialoge-box/dialoge-box.component';
 import { DeletedialogComponent } from './student-list/deletedialog/deletedialog.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     DialogeBoxComponent,
     DeletedialogComponent,
     ForgetPasswordComponent,
+    ConfirmPasswordComponent,
   ],
   imports: [
     BrowserModule,

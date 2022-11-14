@@ -11,6 +11,7 @@ export class ApiCalService {
   }
   
   badgeCount = new Subject<any>()
+  emailR = new Subject<any>()
   StudentList():Observable<any>{
     return this.http.get('http://localhost:3000/api/studentList');
   }
@@ -32,6 +33,13 @@ export class ApiCalService {
     })
     return this.http.put('http://localhost:3000/api/student-register',updatedData,{params:params})
   }
+  resetPassword(email:any){
+    return this.http.post('http://localhost:3000/api/reset-password',email)
+  }
+  resetNewPassword(email:any){
+    return this.http.put('http://localhost:3000/api/register',email)
+  }
+
 }
 
 
