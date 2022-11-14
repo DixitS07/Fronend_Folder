@@ -1,8 +1,39 @@
-mat-form-field,.filediv,.regbtn {
+mat-form-field,.filediv{
     margin: 12px;
     width: 250px;
+  }
+  .regbtn{
+    margin: 12px;
+    width: 400px;
+    display: flex;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
   }
 .btn{
   width:400px;
   justify-content: center;
+}
+.form-photo{
+  width:0;
+  height:0;
+  z-index:-1;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+}
+.filediv{
+  display: flex;
+  justify-content: center;
+  align-items:center ;
+}
+.filesvgdiv{
+  background-color: rgba(0, 255, 255, 0.819);
+  border-radius: 50px;
+  height: 100px;
+  width:100px;
+  display: flex;
+  margin:auto;
+  justify-content: center;
+  align-items:center ;
 }
