@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -35,10 +35,17 @@ export class ApiCalService {
     return this.http.put('http://localhost:3000/api/student-register',updatedData,{params:params})
   }
   resetPassword(email:any){
-    return this.http.post('http://localhost:3000/api/reset-password',email)
+    return this.http.post<void>('http://localhost:3000/api/reset-password',email)
   }
-  resetNewPassword(email:any){
-    return this.http.put('http://localhost:3000/api/register',email)
+  resetNewPassword(email:any,otp:any,password:any){
+    // console.log(email,body,'dixit')
+    let param1 = new HttpParams({
+      fromObject:{
+        'email':"chetan",
+        'otp':"jangid"
+      }
+    })
+    return this.http.put(`http://localhost:3000/api/register?email=${email}&otp=${otp}`,password)
   }
 
 }
