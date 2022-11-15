@@ -6,12 +6,12 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiCalService {
-  
-  constructor(private http:HttpClient) {
-  }
-  
   badgeCount = new Subject<any>()
   emailR = new Subject<any>()
+
+  constructor(private http:HttpClient) {
+  }
+
   StudentList():Observable<any>{
     console.log(this.badgeCount)
     return this.http.get('http://localhost:3000/api/studentList');
@@ -37,7 +37,7 @@ export class ApiCalService {
   resetPassword(email:any){
     return this.http.post<void>('http://localhost:3000/api/reset-password',email)
   }
-  resetNewPassword(email:any,otp:any,password:any){
+  resetNewPassword(emailR: any,otp:any,password:any){
     // console.log(email,body,'dixit')
     let param1 = new HttpParams({
       fromObject:{
@@ -45,7 +45,7 @@ export class ApiCalService {
         'otp':"jangid"
       }
     })
-    return this.http.put(`http://localhost:3000/api/register?email=${email}&otp=${otp}`,password)
+    return this.http.put(`http://localhost:3000/api/register?email=${emailR}&otp=${otp}`,password)
   }
 
 }

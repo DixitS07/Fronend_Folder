@@ -32,8 +32,8 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   Emailverify(){
-    console.log(this.myReactiveForm.value)
-    localStorage.setItem('email',this.myReactiveForm.value.email)
+    console.log(this.myReactiveForm.value.email,'dixitrrrrrr')
+    // localStorage.setItem('email',this.myReactiveForm.value.email)
     this._api.emailR.next(this.myReactiveForm.value.email)
      this._api.resetPassword(this.myReactiveForm.value).subscribe(
       (err)=>{console.log(err)

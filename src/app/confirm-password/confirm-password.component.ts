@@ -31,8 +31,8 @@ export class ConfirmPasswordComponent implements OnInit {
   newPassword(){
     // this._api.emailR.subscribe((res)=>{
     //   this.emailR = res
-    //   console.log(this.emailR,'dixitemailjj');
     // })
+    // console.log(this.emailR,'dixitemailjj');
     this.emailR = localStorage.getItem('email')
     if (this.LoginPassword.Password == this.LoginPassword.ConfirmPassword) {
       console.log('Correct');
