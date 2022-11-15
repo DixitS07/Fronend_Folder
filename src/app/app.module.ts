@@ -27,6 +27,8 @@ import { MatSortModule} from '@angular/material/sort';
 import { DialogeBoxComponent } from './dialoge-box/dialoge-box.component';
 import { DeletedialogComponent } from './student-list/deletedialog/deletedialog.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     StudentListComponent,
     DialogeBoxComponent,
     DeletedialogComponent,
+    ForgetPasswordComponent,
+    ConfirmPasswordComponent,
   ],
   imports: [
     BrowserModule,

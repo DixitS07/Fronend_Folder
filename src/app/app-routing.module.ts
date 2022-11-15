@@ -2,8 +2,10 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from './appServices/auth.service';
 import { AuthGuard } from './auth.guard';
+import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventsComponent } from './events/events.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SpecialEventComponent } from './special-event/special-event.component';
@@ -50,6 +52,17 @@ const routes: Routes = [
     path:'studentList',
     component:StudentListComponent,
     canActivate:[AuthGuard]
+   
+  },
+  {
+    path:'confirmPassword',
+    component:ConfirmPasswordComponent,
+    // canActivate:[AuthGuard]
+   
+  },
+  {
+    path:'ForgetPassword',
+    component:ForgetPasswordComponent,
    
   },
   {
