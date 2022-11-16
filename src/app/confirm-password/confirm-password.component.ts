@@ -23,7 +23,7 @@ export class ConfirmPasswordComponent implements OnInit {
     this.myReactiveForm = this.fb.group({
       'otp':[''],
       'password':[''],
-      'ConformPassword':['']
+      'confrimPassword':['']
       })
   
   }
@@ -31,10 +31,10 @@ export class ConfirmPasswordComponent implements OnInit {
   newPassword(){
     // this._api.emailR.subscribe((res)=>{
     //   this.emailR = res
-    //   console.log(this.emailR,'dixitemailjj');
     // })
+    // console.log(this.emailR,'dixitemailjj');
     this.emailR = localStorage.getItem('email')
-    if (this.LoginPassword.Password == this.LoginPassword.ConfirmPassword) {
+    if (this.LoginPassword.Password == this.LoginPassword.confrimPassword) {
       console.log('Correct');
 
       this._api.resetNewPassword(this.emailR,this.myReactiveForm.value.otp,{'password':this.myReactiveForm.value.password}).subscribe(
