@@ -1,4 +1,4 @@
-interface studentData{
+export interface studentData{
     'photo':String,
     'firstName':String,
     'lastName':String,
@@ -6,4 +6,14 @@ interface studentData{
     'email':String,
     'phone':Number,
     'address':String,
+}
+export interface events{
+    "_id": Number,
+    "name": String,
+    "description":String,
+    "date": Date
+}
+export interface loginUserData{
+    "email": String ,
+    "password": String
 }
