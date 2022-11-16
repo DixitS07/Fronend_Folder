@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiCalService } from '../appServices/api-cal.service';
+import { AuthService } from '../appServices/auth.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -15,12 +16,16 @@ export class ForgetPasswordComponent implements OnInit {
   loginUSerData:any={}
 
   constructor(private _api: ApiCalService,
+    private _auth:AuthService,
     private _router:Router,
     private toastr: ToastrService,private fb:FormBuilder) { }
 
     myReactiveForm!:FormGroup;
 
   ngOnInit(): void {
+    if (this._auth.loggedIn()) {
+      this._router.navigate(['/events'])
+  }
   //   if (this._auth.loggedIn()) {
   //     this._router.navigate(['/events'])
   // }

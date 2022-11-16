@@ -37,7 +37,7 @@ export class ApiCalService {
   resetPassword(email:any){
     return this.http.post<void>('http://localhost:3000/api/reset-password',email)
   }
-  resetNewPassword(emailR: any,otp:any,password:any){
+  resetNewPassword(email:any,otp:any,password:any){
     // console.log(email,body,'dixit')
     let param1 = new HttpParams({
       fromObject:{
@@ -45,7 +45,7 @@ export class ApiCalService {
         'otp':"jangid"
       }
     })
-    return this.http.put(`http://localhost:3000/api/register?email=${emailR}&otp=${otp}`,password)
+    return this.http.put(`http://localhost:3000/api/register?email=${email}&otp=${otp}`,password)
   }
 
 }
