@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from '../appServices/event.service';
+import { events } from '../appInterfaces/interface';
 
 @Component({
   selector: 'app-events',
@@ -9,7 +10,7 @@ import { EventService } from '../appServices/event.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-  events: any = [];
+  events:events[] = [];
   constructor(private _eventservice:EventService,
                             private _route:Router) { }
 

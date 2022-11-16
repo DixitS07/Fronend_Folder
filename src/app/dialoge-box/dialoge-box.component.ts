@@ -15,12 +15,11 @@ import { ApiCalService } from '../appServices/api-cal.service';
 export class DialogeBoxComponent implements OnInit {
 
   myReactiveForm!:FormGroup;
-  sIdvar:any;
   selectedFile!:File;
 
   constructor( public dialogRef: MatDialogRef<DialogeBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any, private fb:FormBuilder,private _snackBar: MatSnackBar,private _apical:ApiCalService ) {
-      console.log(data,'coming from slist to dialog')
+      // console.log(data,'coming from slist to dialog')
     }
 
   onNoClick(): void {

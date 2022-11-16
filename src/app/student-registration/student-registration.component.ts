@@ -12,12 +12,10 @@ import { AuthService } from '../appServices/auth.service';
 })
 export class StudentRegistrationComponent implements OnInit {
   constructor(private _authservice:AuthService, private _router:Router, private fb:FormBuilder, private _snackBar: MatSnackBar) { }
-  registerdUserData:any={}
+
   selectedFile!:File;
   myReactiveForm!:FormGroup;
   progress:boolean=false;
-
- 
 
   ngOnInit(): void {
     this.myReactiveForm = this.fb.group({
