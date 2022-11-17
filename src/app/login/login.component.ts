@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { loginUserData } from '../appInterfaces/interface';
 import { AuthService } from '../appServices/auth.service';
 
 
@@ -13,7 +14,7 @@ import { AuthService } from '../appServices/auth.service';
 
 export class LoginComponent implements OnInit {
  errormsg:any={}
-  loginUSerData:any={}
+  loginUSerData:any = {};
   constructor(private _auth: AuthService,
               private _router:Router,
               private toastr: ToastrService) { }

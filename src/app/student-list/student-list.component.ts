@@ -11,18 +11,19 @@ import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { NgxSpinnerService } from "ngx-spinner";
-
+import { studentData } from '../appInterfaces/interface';
 
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
+
+
 export class StudentListComponent implements OnInit,AfterViewInit {
 
   dataSource:any =[]
-  fetchData:any=[]
-  sIdvar:any;
+  fetchData:studentData[]=[]
   
   constructor(private apicall:ApiCalService,
               private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog,
@@ -63,21 +64,20 @@ export class StudentListComponent implements OnInit,AfterViewInit {
     }
   }
 
-  openDialog(elid:any): void {
-    console.log(elid,'from slist')
-    // this.sIdvar = elid
+  openDialog(ele:String): void {
+    // console.log(elid,'from slist')
     const dialogRef = this.dialog.open(DialogeBoxComponent, {
       width: '750px',
       height:'750px',
-      data:elid
+      data:ele
     });
     
   }
 
-  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,elid:any): void {
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,ele:String): void {
     this.dialog.open(DeletedialogComponent, {
       width: '250px',
-      data:elid,
+      data:ele,
       enterAnimationDuration,
       exitAnimationDuration,
     });
@@ -100,7 +100,7 @@ makePdf() {
   // let PdfFile = document.getElementById('pdfTable').contentWindow;
   }
   onExportCsv(){
-    console.log(this.fetchData,"CSV DATA")
+    // console.log(this.fetchData,"CSV DATA")
     this.fetchData.forEach((element:any) => {
     delete element['_id'];
     delete element['photo']
