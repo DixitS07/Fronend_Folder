@@ -29,6 +29,10 @@ import { DeletedialogComponent } from './student-list/deletedialog/deletedialog.
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider
+} from '@abacritt/angularx-social-login';
 
 
 @NgModule({
@@ -69,7 +73,8 @@ import { ConfirmPasswordComponent } from './confirm-password/confirm-password.co
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    SocialLoginModule
     
     
   ],
@@ -77,6 +82,23 @@ import { ConfirmPasswordComponent } from './confirm-password/confirm-password.co
     provide : HTTP_INTERCEPTORS,
     useClass : TokenInterceptorService,
     multi :true
+  },
+  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '319271379531-ur7j1u32iaun8snbtfc7bnsf9lappdto.apps.googleusercontent.com'
+          )
+        }
+      ],
+      onError: (err) => {
+        console.error(err);
+      }
+    } as SocialAuthServiceConfig,
   }],
   bootstrap: [AppComponent]
 })
