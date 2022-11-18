@@ -1,4 +1,4 @@
-import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../appServices/auth.service';
@@ -10,14 +10,20 @@ import { AuthService } from '../appServices/auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerUSerData:any={}
+  user!:SocialUser
   constructor(private _auth: AuthService, 
               private _router: Router,
               private authService: SocialAuthService) { }
 
   ngOnInit(): void {
-    if (this._auth.loggedIn()) {
-      this._router.navigate(['/events'])
-  }
+
+    this.authService.authState.subscribe((user)=>{
+      this.user = user;
+      console.log(this.user);
+    })
+  //   if (this._auth.loggedIn()) {
+  //     this._router.navigate(['/events'])
+  // }
   }
   
   registerUSer(){
@@ -31,7 +37,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ongoogleSigin(){
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+   
+
+
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)  .then(
       (user)=>{
         this._auth.googleSignin(user.idToken).subscribe(
           (res)=>{

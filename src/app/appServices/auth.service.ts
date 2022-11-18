@@ -45,11 +45,14 @@ export class AuthService {
   getToken(){
     return localStorage.getItem('token')
   }
-  googleSignin(token: any){
-    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=('user')`,
-    // postBody:`id_token=${token}providerId=google.com`,
-    // requestUri:'http://localhost:4200',
-    // returnIdpCredential:true,
-    // returnSecureToken:true)
+  googleSignin(user: any){
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp`,user)
+    
+  //   return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=$(user)`,
+  //   postBody:`id_token=${token}providerId=google.com`,
+  //   requestUri:'http://localhost:4200',
+  //   // returnIdpCredential:true,
+  //   // returnSecureToken:true
+  //   )
   }
 }
