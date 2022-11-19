@@ -47,6 +47,8 @@ export class AuthService {
   }
   googleSignin(user: any){
     return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp`,user)
+    // localStorage.setItem('token',token)
+      // this._router.navigate(['/special'])
     
     // return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=$(user)`,
     // postBody:`id_token=${token}providerId=google.com`,
