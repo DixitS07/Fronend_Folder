@@ -16,11 +16,9 @@ export class RegisterComponent implements OnInit {
               private authService: SocialAuthService) { }
 
   ngOnInit(): void {
-
-    this.authService.authState.subscribe((user)=>{
-      this.user = user;
-      console.log(this.user);
-    })
+    
+    
+    
   //   if (this._auth.loggedIn()) {
   //     this._router.navigate(['/events'])
   // }
@@ -30,27 +28,29 @@ export class RegisterComponent implements OnInit {
     this._auth.registeredUser(this.registerUSerData).subscribe(
       (res:any)=>{console.log(res)
       localStorage.setItem('token', res.token)
-      this._router.navigate(['/special'])
+      this._router.navigate(['/special']).then()
       },
       (err)=>console.log(err)
     )
   }
 
-  ongoogleSigin(){
-   
-
-
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)  .then(
-      (user)=>{
-        this._auth.googleSignin(user.idToken).subscribe(
-          (res)=>{
-            console.log(res);
-          },
-          (err)=>{
-            console.log(err);
-          }
-        )
+  ongoogleSigin():void{
+    this.authService.authState.subscribe((user)=>{
+      this.user = user;
+      localStorage.setItem('token', user.idToken)
+      this._router.navigate(['/special'])
+      console.log(this.user);
     })
+
+    // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+    //   (user:any)=>{
+    //     localStorage.setItem('token', user.idToken)
+    //     this._router.navigate(['/special'])
+    //       },
+    //       (err:any)=>{
+    //         console.log(err);
+    //       }
+    //     )
   }
 
 }
