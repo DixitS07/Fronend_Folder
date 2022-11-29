@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -12,7 +12,10 @@ export class EventService {
   constructor( private http:HttpClient) { }
 
   getEvents(){
-    return this.http.get<any>(this._eventsURL)
+    let myHeaders = new HttpHeaders({
+      "Access-Control-Allow-Origin":"*"
+    })
+    return this.http.get<any>(this._eventsURL,{headers:myHeaders})
   }
 
   getspecialEvents(){

@@ -53,4 +53,10 @@ export class RegisterComponent implements OnInit {
     //     )
   }
 
+  onfacebookLogin(){
+    this._auth.FbLogin().subscribe((user)=>{
+      console.log(user)
+    })
+  }
+
 }

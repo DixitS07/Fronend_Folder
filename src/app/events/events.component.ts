@@ -16,7 +16,9 @@ export class EventsComponent implements OnInit {
 
   ngOnInit(): void {
     this._eventservice.getEvents().subscribe(
-      (res)=>{this.events =  res}  ,
+      (res)=>{
+        console.log(res)
+        this.events =  res}  ,
       (err)=>{if(err instanceof HttpErrorResponse ){
         if(err.status === 401){
           this._route.navigate(['/login'])
