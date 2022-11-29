@@ -60,7 +60,8 @@ export class AuthService {
   }
   FbLogin(){
     let myHeaders = new HttpHeaders({
-      "Access-Control-Allow-Origin":"*"
+      "Access-Control-Allow-Origin":"*",
+      "Content-Type": "text/html"
     })
    return this.http.get('http://localhost:3000/auth/facebook',{headers:myHeaders})
   }
