@@ -13,7 +13,9 @@ export class ApiCalService {
   }
 
   StudentList():Observable<any>{
-    console.log(this.badgeCount)
+    console.log(this.badgeCount,'dixit22')
+    var x = localStorage.getItem("token");
+    console.log(x+"dixit33");
     return this.http.get('http://localhost:3000/api/studentList');
   }
   
