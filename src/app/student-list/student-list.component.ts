@@ -36,10 +36,12 @@ export class StudentListComponent implements OnInit,AfterViewInit {
 
 
   ngOnInit(): void {
+    // console.log(this.fetchData)
    
     this.spinner.show();
     this.apicall.StudentList().subscribe((data)=>{
       this.fetchData = data
+      console.log(this.fetchData)
     this.apicall.badgeCount.next(this.fetchData.length)
       this.dataSource=new MatTableDataSource(data);
       this.spinner.hide();

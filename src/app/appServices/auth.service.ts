@@ -9,16 +9,17 @@ export class AuthService {
   static loggedIn() {
     throw new Error('Method not implemented.');
   }
+  x:string = localStorage.getItem("token")!;
   
 
   constructor( private http:HttpClient, private _router:Router) { }
   
   registeredUser(user:any){
-    //  let myheaders = new HttpHeaders({
-    //   'Content-Type':'application/json'
-    // })
+    let headers = new HttpHeaders({
+      'token': this.x
+    })
     console.log('http')
-     return this.http.post('http://localhost:3000/api/register',user)
+     return this.http.post('http://localhost:3000/api/register',user,{headers:headers})
   }
   registeredStudent(student:any){
     //  let myheaders = new HttpHeaders({
