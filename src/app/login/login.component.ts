@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { loginUserData } from '../appInterfaces/interface';
 import { AuthService } from '../appServices/auth.service';
+import jwt_decode from 'jwt-decode';
 
 
 @Component({
@@ -30,6 +31,9 @@ export class LoginComponent implements OnInit {
        localStorage.setItem('token',res.token)
        this._router.navigate(['/special']);
        this.toastr.success(" login Success");
+       const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
+       const expireDate = tokenInfo.exp;
+       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
         },
       (err)=>{console.log(err)
       this.errormsg = err;
@@ -40,6 +44,15 @@ export class LoginComponent implements OnInit {
 
     )
     // console.log(this.loginUSerData)
+  }
+
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
   }
 
 }

@@ -3,6 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class AuthService {
     throw new Error('Method not implemented.');
   }
   x:string = localStorage.getItem("token")!;
-  
+ 
 
   constructor( private http:HttpClient, private _router:Router) { }
   
@@ -36,7 +37,9 @@ export class AuthService {
   }
 
   loggedIn(){
+ 
     return !! localStorage.getItem('token')
+    
   }
   logoutUser(){
     this._router.navigate(['/login'])
@@ -64,6 +67,12 @@ export class AuthService {
     // // returnIdpCredential:true,
     // // returnSecureToken:true
     // )
+  }
+  autologout(expire:number){
+    setTimeout(()=>{
+      this.logoutUser();
+    },expire)
+
   }
   FbLogin(){
     let myHeaders = new HttpHeaders({

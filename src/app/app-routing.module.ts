@@ -22,6 +22,7 @@ const routes: Routes = [
   {
     path:'events',
     component:EventsComponent,
+    canActivate:[AuthGuard]
     
   },
   {

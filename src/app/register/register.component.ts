@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
+import jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-register',
@@ -28,12 +30,16 @@ export class RegisterComponent implements OnInit {
   registerUSer(){
     this._auth.registeredUser(this.registerUSerData).subscribe(
       (res:any)=>{
-        console.log(res)
-        this._apical.getUserName.next(res.uname)
-        localStorage.setItem('token', res.token)
-        this._router.navigate(['/special']).then()
-      },
-      (err)=>console.log(err)
+      this._apical.getUserName.next(res.uname)
+      console.log(res)
+      localStorage.setItem('token', res.token) 
+      this._router.navigate(['/special']).then()
+      const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
+      const expireDate = tokenInfo.exp;
+      this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
+    }, (err) => {
+      console.log(err)
+      }
     )
   }
 
@@ -66,5 +72,15 @@ export class RegisterComponent implements OnInit {
     (err)=>console.log(err)
     )
   }
+
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
+  }
+
 
 }
