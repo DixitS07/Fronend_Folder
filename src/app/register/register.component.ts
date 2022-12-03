@@ -1,6 +1,7 @@
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { AuthService } from '../appServices/auth.service';
 export class RegisterComponent implements OnInit {
   registerUSerData:any={}
   user!:SocialUser
-  constructor(private _auth: AuthService, 
+  constructor(private _auth: AuthService, private _apical:ApiCalService,
               private _router: Router,
               private authService: SocialAuthService) { }
 
@@ -27,10 +28,10 @@ export class RegisterComponent implements OnInit {
   registerUSer(){
     this._auth.registeredUser(this.registerUSerData).subscribe(
       (res:any)=>{
-      this._auth.userId.next(res.uname)
-      console.log(res)
-      localStorage.setItem('token', res.token) 
-      this._router.navigate(['/special']).then()
+        console.log(res)
+        this._apical.getUserName.next(res.uname)
+        localStorage.setItem('token', res.token)
+        this._router.navigate(['/special']).then()
       },
       (err)=>console.log(err)
     )

@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
       name.unsubscribe()
       console.log(this.badgeCount,count)
     })
-    let usname = this._auth.userId.subscribe(uname=>{
+    let usname = this._apicall.getUserName.subscribe(uname=>{
       this.username = uname
       usname.unsubscribe()
       console.log(this.username,uname)

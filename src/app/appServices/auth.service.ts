@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  userId = new Subject<any>()
   static loggedIn() {
     throw new Error('Method not implemented.');
   }
@@ -17,11 +16,10 @@ export class AuthService {
   constructor( private http:HttpClient, private _router:Router) { }
   
   registeredUser(user:any){
-    let headers = new HttpHeaders({
-      'token': this.x
-    })
-    console.log('http')
-     return this.http.post('http://localhost:3000/api/register',user,{headers:headers})
+    // let headers = new HttpHeaders({
+    //   'token': this.x
+    // })
+     return this.http.post('http://localhost:3000/api/register',user)
   }
   registeredStudent(student:any){
     //  let myheaders = new HttpHeaders({
@@ -49,8 +47,9 @@ export class AuthService {
   autoLogout(){
     setTimeout(() => {
       this.logoutUser()
-    },3600);
+    },360000);
   }
+
   getToken(){
     return localStorage.getItem('token')
   }
