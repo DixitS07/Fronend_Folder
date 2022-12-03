@@ -2,6 +2,8 @@ import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/an
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../appServices/auth.service';
+import jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-register',
@@ -31,8 +33,12 @@ export class RegisterComponent implements OnInit {
       console.log(res)
       localStorage.setItem('token', res.token) 
       this._router.navigate(['/special']).then()
-      },
-      (err)=>console.log(err)
+      const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
+      const expireDate = tokenInfo.exp;
+      this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
+    }, (err) => {
+      console.log(err)
+      }
     )
   }
 
@@ -65,5 +71,15 @@ export class RegisterComponent implements OnInit {
     (err)=>console.log(err)
     )
   }
+
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
+  }
+
 
 }

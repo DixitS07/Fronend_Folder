@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,16 +13,16 @@ export class AuthService {
     throw new Error('Method not implemented.');
   }
   x:string = localStorage.getItem("token")!;
-  
+ 
 
   constructor( private http:HttpClient, private _router:Router) { }
   
   registeredUser(user:any){
-    let headers = new HttpHeaders({
-      'token': this.x
-    })
+    // let headers = new HttpHeaders({
+    //   'token': this.x
+    // })
     console.log('http')
-     return this.http.post('http://localhost:3000/api/register',user,{headers:headers})
+     return this.http.post('http://localhost:3000/api/register',user)
   }
   registeredStudent(student:any){
     //  let myheaders = new HttpHeaders({
@@ -38,7 +39,9 @@ export class AuthService {
   }
 
   loggedIn(){
+ 
     return !! localStorage.getItem('token')
+    
   }
   logoutUser(){
     this._router.navigate(['/login'])
@@ -65,6 +68,12 @@ export class AuthService {
     // // returnIdpCredential:true,
     // // returnSecureToken:true
     // )
+  }
+  autologout(expire:number){
+    setTimeout(()=>{
+      this.logoutUser();
+    },expire)
+
   }
   FbLogin(){
     let myHeaders = new HttpHeaders({
