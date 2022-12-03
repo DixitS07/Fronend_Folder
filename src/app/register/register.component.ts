@@ -26,8 +26,10 @@ export class RegisterComponent implements OnInit {
   
   registerUSer(){
     this._auth.registeredUser(this.registerUSerData).subscribe(
-      (res:any)=>{console.log(res)
-      localStorage.setItem('token', res.token)
+      (res:any)=>{
+      this._auth.userId.next(res.uname)
+      console.log(res)
+      localStorage.setItem('token', res.token) 
       this._router.navigate(['/special']).then()
       },
       (err)=>console.log(err)
@@ -54,9 +56,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onfacebookLogin(){
-    this._auth.FbLogin().subscribe((user)=>{
-      console.log(user)
-    })
+    this._auth.FbLogin().subscribe(
+    (res:any)=>{
+      console.log(res,'response form fb node')
+      localStorage.setItem('token', res.token)
+      this._router.navigate(['/special']).then()
+    },
+    (err)=>console.log(err)
+    )
   }
 
 }

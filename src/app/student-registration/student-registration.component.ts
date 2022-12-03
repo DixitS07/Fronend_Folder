@@ -53,7 +53,6 @@ export class StudentRegistrationComponent implements OnInit {
         duration: 1000
       })
       this.progress=false
-      // localStorage.setItem('token', res.token)
       this._router.navigate(['/studentList'])
     },
      (err)=>{

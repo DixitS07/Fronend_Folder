@@ -50,7 +50,6 @@ export class StudentListComponent implements OnInit,AfterViewInit {
       // console.log(this.fetchData.length,this.fetchData,'data1')
     })
     
-    
   }
   ngAfterViewInit() {
   }

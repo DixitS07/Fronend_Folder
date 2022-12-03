@@ -10,6 +10,7 @@ import { AuthService } from '../appServices/auth.service';
 })
 export class DashboardComponent implements OnInit {
   badgeCount:any=0;
+  username:any;
   constructor(public _auth:AuthService,private _apicall:ApiCalService ) { 
     
   }
@@ -19,6 +20,11 @@ export class DashboardComponent implements OnInit {
       this.badgeCount=count
       name.unsubscribe()
       console.log(this.badgeCount,count)
+    })
+    let usname = this._auth.userId.subscribe(uname=>{
+      this.username = uname
+      usname.unsubscribe()
+      console.log(this.username,uname)
     })
   }
   sidenav:any =true;
