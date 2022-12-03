@@ -1,11 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  userId = new Subject<any>()
   static loggedIn() {
     throw new Error('Method not implemented.');
   }
@@ -42,6 +44,11 @@ export class AuthService {
     window.location.reload();
     return localStorage.removeItem('token')
 
+  }
+  autoLogout(){
+    setTimeout(() => {
+      this.logoutUser()
+    },3600);
   }
   getToken(){
     return localStorage.getItem('token')
