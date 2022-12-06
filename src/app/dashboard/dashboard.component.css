@@ -5,10 +5,10 @@
 
 }
 
-button {
+/* button {
   margin: 10px;
   border: 1px solid black;
-}
+} */
 
 .example-spacer {
   flex: 1 1 auto;
@@ -119,4 +119,12 @@ svg {
 .active{
   border-radius: 6px;
   background-color: rgba(254, 84, 33, 0.407);
+}
+
+.aa{
+  padding-right: 80px; 
+}
+
+a {
+  text-decoration: none;
 }
