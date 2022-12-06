@@ -30,9 +30,13 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import {
-  GoogleLoginProvider
-} from '@abacritt/angularx-social-login';
+import {GoogleLoginProvider} from '@abacritt/angularx-social-login';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 
 @NgModule({
@@ -49,6 +53,7 @@ import {
     DeletedialogComponent,
     ForgetPasswordComponent,
     ConfirmPasswordComponent,
+    DeleteAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,8 +79,10 @@ import {
     MatPaginatorModule,
     MatSortModule,
     NgxSpinnerModule,
-    SocialLoginModule
-    
+    SocialLoginModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDialogModule
     
   ],
   providers: [AuthService,EventService,AuthGuard,{

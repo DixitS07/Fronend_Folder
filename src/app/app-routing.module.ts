@@ -4,6 +4,7 @@ import { AuthService } from './appServices/auth.service';
 import { AuthGuard } from './auth.guard';
 import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { EventsComponent } from './events/events.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { LoginComponent } from './login/login.component';
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path:'special',
     component:SpecialEventComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path:'deleteAccount',
+    component:DeleteAccountComponent,
     canActivate:[AuthGuard]
   },
   {
