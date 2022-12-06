@@ -10,7 +10,9 @@ import { AuthService } from '../appServices/auth.service';
 })
 export class DashboardComponent implements OnInit {
   badgeCount:any=0;
-  username:any;
+  username:any; 
+  btntoggle:boolean = false;
+  
   constructor(public _auth:AuthService,private _apicall:ApiCalService ) { 
     
   }
@@ -21,15 +23,17 @@ export class DashboardComponent implements OnInit {
       name.unsubscribe()
       console.log(this.badgeCount,count)
     })
-    let usname = this._auth.userId.subscribe(uname=>{
+    this._auth.getUserName.subscribe(uname=>{
       this.username = uname
-      usname.unsubscribe()
-      console.log(this.username,uname)
+      console.log(this.username)
     })
   }
   sidenav:any =true;
   menuicon:any = false;
   
+  onToggle(){
+    this.btntoggle = !this.btntoggle
+  }
 
   sidenavToggle(){
     this.menuicon=true 

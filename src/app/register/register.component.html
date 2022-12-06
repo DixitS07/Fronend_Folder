@@ -12,12 +12,18 @@
               </div>
               <div class="form-group">
                 <label for="Email">Email</label>
-                <input [(ngModel)]="registerUSerData.email" name="email" type="email" class="form-control rounded-0" required>
+                <input [(ngModel)]="registerUSerData.email" name="email" type="email" class="form-control rounded-0" required #email>
+                <button mat-raised-button (click)="sendOtp(email)">Send Otp</button><br>
               </div>
                <div class="form-group">
                  <label for="Password">Password</label>
                  <input [(ngModel)]="registerUSerData.password"  name="password" type="password" class="form-control rounded-o" required>
-               </div><br>
+               </div>
+               <div class="form-group">
+                 <label for="otp">OTP</label>
+                 <input [(ngModel)]="registerUSerData.otp"  name="otp" type="text" class="form-control rounded-o" required>
+               </div>
+               <br><br>
                <button (click)="registerUSer()"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
                <button (click)="ongoogleSigin()"  class="btn btn-primary float-right float-end">SignInWithGoogle</button>
                <button (click)="onfacebookLogin()"  class="btn btn-primary float-right float-end">Sign In With Facebook</button>

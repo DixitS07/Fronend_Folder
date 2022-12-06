@@ -1,6 +1,7 @@
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
 import jwt_decode from 'jwt-decode';
 
@@ -13,7 +14,7 @@ import jwt_decode from 'jwt-decode';
 export class RegisterComponent implements OnInit {
   registerUSerData:any={}
   user!:SocialUser
-  constructor(private _auth: AuthService, 
+  constructor(private _auth: AuthService, private _apical:ApiCalService,
               private _router: Router,
               private authService: SocialAuthService) { }
 
@@ -26,11 +27,23 @@ export class RegisterComponent implements OnInit {
   // }
   }
   
+  sendOtp(email:any){
+    console.log(email.value)
+    this._auth.otpVerify(email.value).subscribe(
+      (res)=>{
+        console.log(res)
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
+
   registerUSer(){
     this._auth.registeredUser(this.registerUSerData).subscribe(
       (res:any)=>{
-      this._auth.userId.next(res.uname)
-      console.log(res)
+        console.log(res)
+      this._auth.getUserName.next(res.uname)
       localStorage.setItem('token', res.token) 
       this._router.navigate(['/special']).then()
       const tokenInfo = this.getDecodedAccessToken(res.token); // decode token

@@ -14,14 +14,10 @@ export class ApiCalService {
   }
 
   StudentList():Observable<any>{
-
-    console.log(this.badgeCount,'dixit22')
-    // console.log(this.x+"dixit33"); 
-    let headers = new HttpHeaders({
-      'token': this.x
+    let myheaders = new HttpHeaders({
+      token: this.x
     })
-    
-    return this.http.get('http://localhost:3000/api/studentList',{headers:headers}
+    return this.http.get('http://localhost:3000/api/studentList',{headers:myheaders}
     );
   }
   
