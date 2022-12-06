@@ -4,9 +4,27 @@
         <path d="M6 36v-3h36v3Zm0-10.5v-3h36v3ZM6 15v-3h36v3Z" />
       </svg></button>
     <span class="example-spacer"></span>
-    <span>Dashboard</span>
-    <button mat-raised-button>Hello, {{username}}</button>
-    <button mat-raised-button  class="animate__animated animate__bounce" (click)="_auth.logoutUser()"> Logout <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" viewBox="0 0 48 48" height="48" width="48"><path d="M9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h14.55v3H9v30h14.55v3Zm24.3-9.25-2.15-2.15 5.1-5.1h-17.5v-3h17.4l-5.1-5.1 2.15-2.15 8.8 8.8Z"/></svg></button>
+    <span>Dashboard &nbsp;</span>
+    <!-- <button mat-raised-button>Hello, {{username}}</button> -->
+    <button class="aa" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <!-- <mat-icon>more_vert</mat-icon> -->
+      <span>Hello, {{username}}</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="_auth.logoutUser()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Logout</span>
+      </button>
+      <button mat-menu-item (click)="openDialog()">
+        <mat-icon>delete_forever</mat-icon>
+        <span>Delete Account</span>
+      </button>
+    </mat-menu>
+    <!-- <mat-menu #animals="matMenu">
+      <button mat-menu-item class="animate__animated animate__bounce" (click)="_auth.logoutUser()">Logout<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" viewBox="0 0 48 48" height="48" width="48"><path d="M9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h14.55v3H9v30h14.55v3Zm24.3-9.25-2.15-2.15 5.1-5.1h-17.5v-3h17.4l-5.1-5.1 2.15-2.15 8.8 8.8Z"/></svg></button>
+      <button mat-menu-item >Delete Account</button>
+    </mat-menu> -->
+    <!-- <button mat-raised-button  class="animate__animated animate__bounce" (click)="_auth.logoutUser()"> Logout <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" viewBox="0 0 48 48" height="48" width="48"><path d="M9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h14.55v3H9v30h14.55v3Zm24.3-9.25-2.15-2.15 5.1-5.1h-17.5v-3h17.4l-5.1-5.1 2.15-2.15 8.8 8.8Z"/></svg></button> -->
   </mat-toolbar>
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" [opened]="sidenav">
