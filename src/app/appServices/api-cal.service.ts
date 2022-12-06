@@ -7,7 +7,6 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class ApiCalService {
   badgeCount = new Subject<any>()
-  getUserName = new Subject<any>()
   emailR = new Subject<any>()
   x:string = localStorage.getItem("token")!;
 

@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "animate.css": "^4.1.1",
     "dom-to-image": "^2.6.0",
     "html-to-pdfmake": "^2.4.9",
     "html2canvas": "^1.4.1",

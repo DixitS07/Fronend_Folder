@@ -27,11 +27,23 @@ export class RegisterComponent implements OnInit {
   // }
   }
   
+  sendOtp(email:any){
+    console.log(email.value)
+    this._auth.otpVerify(email.value).subscribe(
+      (res)=>{
+        console.log(res)
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
+
   registerUSer(){
     this._auth.registeredUser(this.registerUSerData).subscribe(
       (res:any)=>{
-      this._apical.getUserName.next(res.uname)
-      console.log(res)
+        console.log(res)
+      this._auth.getUserName.next(res.uname)
       localStorage.setItem('token', res.token) 
       this._router.navigate(['/special']).then()
       const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
