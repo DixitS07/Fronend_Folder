@@ -31,9 +31,9 @@ export class DashboardComponent implements OnInit {
   sidenav:any =true;
   menuicon:any = false;
   
-  onToggle(){
-    this.btntoggle = !this.btntoggle
-  }
+  // onToggle(){
+  //   this.btntoggle = !this.btntoggle
+  // }
 
   sidenavToggle(){
     this.menuicon=true 
