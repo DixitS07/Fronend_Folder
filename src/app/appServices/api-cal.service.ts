@@ -15,7 +15,7 @@ export class ApiCalService {
 
   StudentList():Observable<any>{
     let myheaders = new HttpHeaders({
-      token: this.x
+      authorization: this.x
     })
     return this.http.get('http://localhost:3000/api/studentList',{headers:myheaders}
     );
@@ -29,7 +29,7 @@ export class ApiCalService {
       }
     })
     let headers = new HttpHeaders({
-      token: this.x
+      authorization: this.x
     })
     return this.http.delete('http://localhost:3000/api/student-register',{headers:headers, params:params})
   }
@@ -41,7 +41,7 @@ export class ApiCalService {
       }
     })
     let headers = new HttpHeaders({
-      token: this.x
+      authorization: this.x
     })
     return this.http.put('http://localhost:3000/api/student-register',updatedData,{headers:headers, params:params})
   }
@@ -61,7 +61,7 @@ export class ApiCalService {
 
   delAccount(password:any){
     let headers = new HttpHeaders({
-      token: this.x
+      authorization: this.x
     })
     return this.http.post('http://localhost:3000/api/deleteAccount',{password},
     {headers:headers}
