@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
-import { DeleteAccountComponent } from '../delete-account/delete-account.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 
 @Component({

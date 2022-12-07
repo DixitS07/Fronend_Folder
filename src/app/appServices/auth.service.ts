@@ -71,7 +71,6 @@ export class AuthService {
     setTimeout(()=>{
       this.logoutUser();
     },expire)
-
   }
   FbLogin(){
     let myHeaders = new HttpHeaders({
