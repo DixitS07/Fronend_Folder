@@ -33,7 +33,7 @@ import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-s
 import {GoogleLoginProvider} from '@abacritt/angularx-social-login';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
-import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { DeleteAccountComponent } from './dashboard/delete-account/delete-account.component';
 import {MatDialogModule} from '@angular/material/dialog';
 
 

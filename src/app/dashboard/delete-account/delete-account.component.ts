@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ApiCalService } from '../appServices/api-cal.service';
-import { AuthService } from '../appServices/auth.service';
+import { ApiCalService } from '../../appServices/api-cal.service';
+import { AuthService } from '../../appServices/auth.service';
 
 @Component({
   selector: 'app-delete-account',
