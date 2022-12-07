@@ -19,12 +19,12 @@ export class DeleteAccountComponent implements OnInit {
 
 
   DeleteAccount(Password:string){
-      console.log(Password)
-      this._api.delAccount(Password).subscribe((res:any)=>{console.log(res),
+      this._api.delAccount(Password).subscribe((res:any)=>{
+        console.log(res),
         this.toastr.success("Account Deleted Successfully");
-        this._router.navigate(['/login'])
-        window.location.reload();
         localStorage.removeItem('token')
+        window.location.reload()
+        this._router.navigate(['/login'])
       },(err:any)=>{
       console.log(err)
       this.toastr.error("Password Not Matched Account Not Deleted");
