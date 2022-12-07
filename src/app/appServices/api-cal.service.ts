@@ -14,10 +14,7 @@ export class ApiCalService {
   }
 
   StudentList():Observable<any>{
-    let myheaders = new HttpHeaders({
-      authorization: this.x
-    })
-    return this.http.get('http://localhost:3000/api/studentList',{headers:myheaders}
+    return this.http.get('http://localhost:3000/api/studentList',
     );
   }
   
@@ -60,12 +57,7 @@ export class ApiCalService {
   }
 
   delAccount(password:any){
-    let headers = new HttpHeaders({
-      authorization: this.x
-    })
-    return this.http.post('http://localhost:3000/api/deleteAccount',{password},
-    {headers:headers}
-    )
+    return this.http.post('http://localhost:3000/api/deleteAccount',{password} )
   }
 
 }

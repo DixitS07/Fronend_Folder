@@ -12,10 +12,10 @@ export class EventService {
   constructor( private http:HttpClient) { }
 
   getEvents(){
-    let myHeaders = new HttpHeaders({
-      "Access-Control-Allow-Origin":"*"
-    })
-    return this.http.get<any>(this._eventsURL,{headers:myHeaders})
+    // let myHeaders = new HttpHeaders({
+    //   "Access-Control-Allow-Origin":"*"
+    // })
+    return this.http.get<any>(this._eventsURL)
   }
 
   getspecialEvents(){
