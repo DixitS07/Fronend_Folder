@@ -26,13 +26,13 @@
                  <label for="password">Password</label>
                  <input formControlName='email'  name="password" type="password" class="form-control rounded-o" required>
                </div><br>
-               <button class="btn btn-secondary" (click)="sendOtp(email)">Send Otp</button><br>
+               <button type="button" class="btn btn-secondary" (click)="sendOtp(email)">Send Otp</button><br>
                <div class="form-group">
                  <label for="otp">OTP</label>
                  <input formControlName='otp'  name="otp" type="text" class="form-control rounded-o" required>
                </div>
                <br><br>
-               <button type="submit" [disabled]="!form.valid"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
+               <button type="submit"   class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
                <!-- <button (click)="ongoogleSigin()"  class="btn btn-primary float-right float-end">SignInWithGoogle</button> -->
                <!-- <button (click)="onfacebookLogin()"  class="btn btn-primary float-right float-end">Sign In With Facebook</button> -->
             </form>
@@ -41,3 +41,7 @@
       </div>
     </div>
   </div>
+
+
+
+  <!-- [disabled]="!form.valid" -->

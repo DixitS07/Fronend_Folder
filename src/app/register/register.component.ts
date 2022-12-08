@@ -71,7 +71,6 @@ export class RegisterComponent implements OnInit {
   // }
 
   save() {
-    this.loader = true;
     const formData: FormData = new FormData();
     formData.append('firstName', this.form.value.firstName)
     formData.append('lastName', this.form.value.lastName)
@@ -79,7 +78,7 @@ export class RegisterComponent implements OnInit {
     formData.append('password', this.form.value.password)
     formData.append('profilPic', this.fileToUpload, this.fileToUpload.name)
     formData.append('otp', this.form.value.otp)
-    this._auth.registeredUser(this.registerUSerData).subscribe(
+    this._auth.registeredUser(formData).subscribe(
       (data:any)=>{
       this.toastr.success(data.message)
       this.loader = false;
