@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     this._auth.registeredUser(this.registerUSerData).subscribe(
       (res:any)=>{
         console.log(res)
-      this._auth.getUserName.next(res.uname)
+      this._auth.getUserName.next(res.registeredUser.username)
       localStorage.setItem('token', res.token) 
       this._router.navigate(['/special']).then()
       const tokenInfo = this.getDecodedAccessToken(res.token); // decode token

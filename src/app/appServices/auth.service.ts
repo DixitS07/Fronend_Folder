@@ -46,10 +46,10 @@ export class AuthService {
     return localStorage.removeItem('token')
 
   }
-  autoLogout(){
+  autoLogout(expireDate:any){
     setTimeout(() => {
       this.logoutUser()
-    },360000);
+    },expireDate);
   }
 
   getToken(){
