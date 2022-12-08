@@ -5,31 +5,43 @@
            <h3 class="mb-0">Register Form</h3>
          </div>
           <div class="card-body">
-            <form class="form">
+            <form class="form" [formGroup]="form" (ngSubmit)="save()">
               <div class="form-group">
-                <label for="username">User Name</label>
-                <input [(ngModel)]="registerUSerData.username" name="username" type="text" class="form-control rounded-0" required>
+                <label for="firstName">First Name</label>
+                <input formControlName='firstName' name="firstName" type="text" class="form-control rounded-0" required>
               </div>
               <div class="form-group">
-                <label for="Email">Email</label>
-                <input [(ngModel)]="registerUSerData.email" name="email" type="email" class="form-control rounded-0" required #email>
-                <button mat-raised-button (click)="sendOtp(email)">Send Otp</button><br>
+                <label for="lastName">Last Name</label>
+                <input formControlName='lastName' name='lastName' type="text" class="form-control rounded-0" required>
+              </div>
+              <div class="form-group">
+                <label for="profilPic">ProfilePic</label><br>
+                <input  formControlName='profilPic' type="file" id="profilPic" class="form-photo form-control" accept="image/png, image/gif, image/jpeg" >
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName='email' name="email" type="email" class="form-control rounded-0" required #email>
               </div>
                <div class="form-group">
-                 <label for="Password">Password</label>
-                 <input [(ngModel)]="registerUSerData.password"  name="password" type="password" class="form-control rounded-o" required>
-               </div>
+                 <label for="password">Password</label>
+                 <input formControlName='email'  name="password" type="password" class="form-control rounded-o" required>
+               </div><br>
+               <button type="button" class="btn btn-secondary" (click)="sendOtp(email)">Send Otp</button><br>
                <div class="form-group">
                  <label for="otp">OTP</label>
-                 <input [(ngModel)]="registerUSerData.otp"  name="otp" type="text" class="form-control rounded-o" required>
+                 <input formControlName='otp'  name="otp" type="text" class="form-control rounded-o" required>
                </div>
                <br><br>
-               <button (click)="registerUSer()"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
-               <button (click)="ongoogleSigin()"  class="btn btn-primary float-right float-end">SignInWithGoogle</button>
-               <button (click)="onfacebookLogin()"  class="btn btn-primary float-right float-end">Sign In With Facebook</button>
+               <button type="submit"   class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
+               <!-- <button (click)="ongoogleSigin()"  class="btn btn-primary float-right float-end">SignInWithGoogle</button> -->
+               <!-- <button (click)="onfacebookLogin()"  class="btn btn-primary float-right float-end">Sign In With Facebook</button> -->
             </form>
           </div>
           <p>Already have an account ? <a routerLink="/login">Log In</a> </p>
       </div>
     </div>
   </div>
+
+
+
+  <!-- [disabled]="!form.valid" -->
