@@ -5,34 +5,34 @@
            <h3 class="mb-0">Register Form</h3>
          </div>
           <div class="card-body">
-            <form class="form" [formGroup]="form" (ngSubmit)="save()">
+            <form class="form" [formGroup]="myReactiveForm" (ngSubmit)="save()">
               <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input formControlName='firstName' type="text" class="form-control rounded-0" >
+                <input formControlName='firstName' name="firstName" type="text" class="form-control rounded-0" >
               </div>
               <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input formControlName='lastName' type="text" class="form-control rounded-0" >
+                <input formControlName='lastName' name='lastName' type="text" class="form-control rounded-0" >
               </div>
               <div class="form-group">
-                <label for="photo">ProfilePic</label><br>
-                <input  formControlName='photo' type="file"  class="form-photo form-control" accept="image/png, image/gif, image/jpeg" >
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input formControlName='email'  type="email" class="form-control "  #email>
+                <label for="photo">Profile Pic</label><br>
+                <input  formControlName='photo' type="file" id="photo" class="form-photo form-control" accept="image/png, image/gif, image/jpeg" (change)="getFile($event)">
               </div>
                <div class="form-group">
                  <label for="password">Password</label>
-                 <input formControlName='password'  type="password" class="form-control" >
-               </div><br>
-               <span  class="btn btn-secondary" (click)="sendOtp(email)">Send Otp</span><br>
+                 <input formControlName='password'  name="password" type="password" class="form-control rounded-o" >
+               </div>
+               <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName='email' name="email" type="email" class="form-control rounded-0"  #email (change)="sendOtp(email)">
+              </div><br>
+               <!-- <button type="button" class="btn btn-secondary" >Send Otp</button><br> -->
                <div class="form-group">
                  <label for="otp">OTP</label>
-                 <input  [class.changestyle]="Myenable"   type="text" class="form-control" >
+                 <input  name="otp" type="text" class="form-control rounded-o" required>
                </div>
                <br><br>
-               <button type="submit" [disabled]="!form.valid" class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
+               <button type="submit" [disabled]="!myReactiveForm.valid"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
                <!-- <button (click)="ongoogleSigin()"  class="btn btn-primary float-right float-end">SignInWithGoogle</button> -->
                <!-- <button (click)="onfacebookLogin()"  class="btn btn-primary float-right float-end">Sign In With Facebook</button> -->
             </form>
