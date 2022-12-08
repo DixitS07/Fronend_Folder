@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { MatDialog,MatDialogRef } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
-import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
+
 
 
 @Component({
@@ -14,8 +16,9 @@ export class DashboardComponent implements OnInit {
   badgeCount:any=0;
   username:any; 
   btntoggle:boolean = false;
-  
-  constructor(public _auth:AuthService,private _apicall:ApiCalService,public dialog: MatDialog ) { 
+  // @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
+  @ViewChild('myButton',{read: ElementRef, static:false}) public myButtonRef!: ElementRef
+  constructor(public _auth:AuthService,private _apicall:ApiCalService,public dialog: MatDialog,) { 
     
   }
 
@@ -46,10 +49,19 @@ sidenavToggler(){
     this.sidenav=true
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DeleteAccountComponent, {
-      width: '400px',
+  openDialog() {
+    const bodyRect = document.body.getBoundingClientRect();
+    const elemRect = this.myButtonRef.nativeElement.getBoundingClientRect();
+    console.log(elemRect)
+    const right = bodyRect.right - elemRect.right;
+    const top = elemRect.top - bodyRect.top+25;
+    const dialogRef = this.dialog.open(MenuDialogComponent, {
+      width: '250px',
+      height:'300px',
+      position: { right: right +'px', top: top + 'px' },
+      hasBackdrop: true,
     });
+    dialogRef.afterClosed().subscribe();
   }
 
 }

@@ -35,6 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { DeleteAccountComponent } from './dashboard/delete-account/delete-account.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MenuDialogComponent } from './dashboard/menu-dialog/menu-dialog.component';
 
 
 
@@ -54,6 +55,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     ForgetPasswordComponent,
     ConfirmPasswordComponent,
     DeleteAccountComponent,
+    MenuDialogComponent,
   ],
   imports: [
     BrowserModule,

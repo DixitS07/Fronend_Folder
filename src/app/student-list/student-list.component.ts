@@ -38,7 +38,11 @@ export class StudentListComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
     // console.log(this.fetchData)
    
-    this.spinner.show();
+    this.spinner.show(undefined, {
+      type: 'pacman',
+      bdColor: 'rgba(255,255,255,0)',
+      color: '#333333'
+    });
     this.apicall.StudentList().subscribe((data)=>{
       this.fetchData = data
       console.log(this.fetchData)
