@@ -1,3 +1,8 @@
 p{
     text-align: center;
 }
+
+
+.changestyle{
+    pointer-events: none;
+}

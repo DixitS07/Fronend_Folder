@@ -14,9 +14,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  loader: boolean = false;
+  Myenable: boolean = true;
   form!: FormGroup;
-  registerUSerData:any={}
   user!:SocialUser
   fileToUpload: any = null;
 
@@ -33,16 +32,19 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      profilPic: ['', Validators.required],
+      photo: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,]],
-      otp: ['', [Validators.required,]]
+      // otp: ['', [Validators.required,]]
     })
 
     }
 
+   
+
   
   sendOtp(email:any){
+    this.Myenable = false;
     console.log(email.value)
     this._auth.otpVerify(email.value).subscribe(
       (res:any)=>{
@@ -60,7 +62,7 @@ export class RegisterComponent implements OnInit {
   //       console.log(res)
   //     this._auth.getUserName.next(res.uname)
   //     localStorage.setItem('token', res.token) 
-  //     this._router.navigate(['/special']).then()
+  //     
   //     const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
   //     const expireDate = tokenInfo.exp;
   //     this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
@@ -76,20 +78,19 @@ export class RegisterComponent implements OnInit {
     formData.append('lastName', this.form.value.lastName)
     formData.append('email', this.form.value.email)
     formData.append('password', this.form.value.password)
-    formData.append('profilPic', this.fileToUpload, this.fileToUpload.name)
-    formData.append('otp', this.form.value.otp)
+    formData.append('photo', this.fileToUpload)
+    // formData.append('otp', this.form.value.otp)
+    console.log(formData);
     this._auth.registeredUser(formData).subscribe(
       (data:any)=>{
       this.toastr.success(data.message)
-      this.loader = false;
       localStorage.setItem('token', data.token)
-      this.router.navigate(['/dashboard'])
+      this._router.navigate(['/special']).then()
       const tokenInfo = this.getDecodedAccessToken(data.token); // decode token
       const expireDate = tokenInfo.exp;
       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
-    }, (err) => {
-      this.loader = false
-      this.toastr.error(err.error.message)
+    }, (err:any) => {
+      this.toastr.error(err.message)
     })
   }
   
