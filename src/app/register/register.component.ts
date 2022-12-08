@@ -15,10 +15,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent implements OnInit {
   loader: boolean = false;
-  form!: FormGroup;
+  myReactiveForm!: FormGroup;
   registerUSerData:any={}
   user!:SocialUser
-  fileToUpload: any = null;
+  fileToUpload!:File;
 
   constructor(private _auth: AuthService, 
               private _apical:ApiCalService,
@@ -30,17 +30,20 @@ export class RegisterComponent implements OnInit {
               }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    this.myReactiveForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      profilPic: ['', Validators.required],
+      photo: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,]],
-      otp: ['', [Validators.required,]]
+      // otp: ['', [Validators.required,]]
     })
 
     }
-
+    getFile(event:any){
+      // this.fileToUpload = event.target.files[0]
+      this.fileToUpload = event.target.files.item(0)
+    }
   
   sendOtp(email:any){
     console.log(email.value)
@@ -53,7 +56,7 @@ export class RegisterComponent implements OnInit {
       }
     )
   }
-
+ 
   // registerUSer(){
   //   this._auth.registeredUser(this.registerUSerData).subscribe(
   //     (res:any)=>{
@@ -71,13 +74,15 @@ export class RegisterComponent implements OnInit {
   // }
 
   save() {
-    const formData: FormData = new FormData();
-    formData.append('firstName', this.form.value.firstName)
-    formData.append('lastName', this.form.value.lastName)
-    formData.append('email', this.form.value.email)
-    formData.append('password', this.form.value.password)
-    formData.append('profilPic', this.fileToUpload, this.fileToUpload.name)
-    formData.append('otp', this.form.value.otp)
+    let form = this.myReactiveForm.value
+    let formData = new FormData();
+    formData.append('firstName', form.firstName)
+    formData.append('lastName', form.lastName)
+    formData.append('email',form.email)
+    formData.append('password',form.password)
+    formData.append('photo', this.fileToUpload,this.fileToUpload.name)
+    // formData.append('otp', this.form.value.otp)
+    console.log(formData)
     this._auth.registeredUser(formData).subscribe(
       (data:any)=>{
       this.toastr.success(data.message)
