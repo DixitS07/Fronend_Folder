@@ -75,7 +75,7 @@ export class StudentListComponent implements OnInit,AfterViewInit {
       width: '750px',
       height:'750px',
       data:ele
-    });
+    }); 
     
   }
 

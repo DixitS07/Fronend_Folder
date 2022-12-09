@@ -8,7 +8,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  getUserName = new BehaviorSubject<any>('User')
   static loggedIn() {
     throw new Error('Method not implemented.');
   }
@@ -18,7 +17,7 @@ export class AuthService {
   constructor( private http:HttpClient, private _router:Router) { }
   
   registeredUser(user:any){
-    // console.log(user)
+    console.log(user)
      return this.http.post('http://localhost:3000/api/register',user)
   }
   otpVerify(email:any){

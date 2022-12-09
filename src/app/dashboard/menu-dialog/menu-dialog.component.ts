@@ -12,11 +12,12 @@ import { DeleteAccountComponent } from '../delete-account/delete-account.compone
 })
 export class MenuDialogComponent implements OnInit {
 
-  constructor(public _auth:AuthService,private dialog:MatDialog) { }
+  constructor(public _auth:AuthService,private dialog:MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data:any) { }
 
   ngOnInit(): void {
   }
-openDialog(){
+openDeleteDialog(){
   const dialogRef = this.dialog.open(DeleteAccountComponent, {
     width: '500px',
   });
