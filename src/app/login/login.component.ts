@@ -16,6 +16,7 @@ import jwt_decode from 'jwt-decode';
 export class LoginComponent implements OnInit {
  errormsg:any={}
   loginUSerData:any = {};
+  loggedUser:any;
   constructor(private _auth: AuthService,
               private _router:Router,
               private toastr: ToastrService) { }
@@ -29,7 +30,6 @@ export class LoginComponent implements OnInit {
     this._auth.loggedUser(this.loginUSerData).subscribe(
       (res:any)=>{
        console.log(res)
-       this._auth.getUserName.next(res.uname)
        localStorage.setItem('token',res.token)
        this._router.navigate(['/special']);
        this.toastr.success(" login Success");
