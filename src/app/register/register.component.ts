@@ -4,9 +4,8 @@ import { Router } from '@angular/router';
 import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
 import jwt_decode from 'jwt-decode';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,FormControl ,Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-register',
@@ -90,7 +89,7 @@ export class RegisterComponent implements OnInit {
       (data:any)=>{
       this.toastr.success(data.message)
       localStorage.setItem('token', data.token)
-      this._router.navigate(['/special']).then()
+      this._router.navigate(['/special'])
       const tokenInfo = this.getDecodedAccessToken(data.token); // decode token
       const expireDate = tokenInfo.exp;
       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())

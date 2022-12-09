@@ -29,7 +29,7 @@
                <!-- <button type="button" class="btn btn-secondary" >Send Otp</button><br> -->
                <div class="form-group">
                  <label for="otp">OTP</label>
-                 <input  name="otp" type="text" class="form-control rounded-o" required>
+                 <input formControlName='otp' name="otp" type="text" class="form-control rounded-o" required>
                </div>
                <br><br>
                <button type="submit" [disabled]="!myReactiveForm.valid"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
