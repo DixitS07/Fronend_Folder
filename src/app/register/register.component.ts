@@ -20,7 +20,6 @@ export class RegisterComponent implements OnInit {
   registerUSerData:any={}
   user!:SocialUser
   fileToUpload!:File;
-
   constructor(private _auth: AuthService, 
               private _apical:ApiCalService,
               private _router: Router,
@@ -37,7 +36,7 @@ export class RegisterComponent implements OnInit {
       photo: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,]],
-      // otp: ['', [Validators.required,]]
+      otp: ['', [Validators.required,]]
     })
 
     }
@@ -59,6 +58,7 @@ export class RegisterComponent implements OnInit {
     )
   }
  
+<<<<<<< HEAD
   // registerUSer(){
   //   this._auth.registeredUser(this.registerUSerData).subscribe(
   //     (res:any)=>{
@@ -75,6 +75,8 @@ export class RegisterComponent implements OnInit {
   //   )
   // }
 
+=======
+>>>>>>> b46e06affa8e51f153632f611eb973a7c4068c81
   save() {
     let form = this.myReactiveForm.value
     let formData = new FormData();
@@ -82,14 +84,15 @@ export class RegisterComponent implements OnInit {
     formData.append('lastName', form.lastName)
     formData.append('email',form.email)
     formData.append('password',form.password)
+    formData.append('otp', form.otp)
     formData.append('photo', this.fileToUpload,this.fileToUpload.name)
-    // formData.append('otp', this.form.value.otp)
     console.log(formData)
     this._auth.registeredUser(formData).subscribe(
       (data:any)=>{
-      this.toastr.success(data.message)
+        this.toastr.success(data.message)
+      this.loader = false;
       localStorage.setItem('token', data.token)
-      this._router.navigate(['/special'])
+      this.router.navigate(['/special'])
       const tokenInfo = this.getDecodedAccessToken(data.token); // decode token
       const expireDate = tokenInfo.exp;
       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())

@@ -26,13 +26,16 @@
                 <label for="email">Email</label>
                 <input formControlName='email' name="email" type="email" class="form-control rounded-0"  #email (change)="sendOtp(email)">
               </div><br>
-               <!-- <button type="button" class="btn btn-secondary" >Send Otp</button><br> -->
                <div class="form-group">
                  <label for="otp">OTP</label>
+<<<<<<< HEAD
                  <input formControlName='otp' name="otp" type="text" class="form-control rounded-o" required>
+=======
+                 <input  formControlName="otp" type="text" class="form-control rounded-o" required>
+>>>>>>> b46e06affa8e51f153632f611eb973a7c4068c81
                </div>
                <br><br>
-               <button type="submit" [disabled]="!myReactiveForm.valid"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
+               <button type="submit"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
                <!-- <button (click)="ongoogleSigin()"  class="btn btn-primary float-right float-end">SignInWithGoogle</button> -->
                <!-- <button (click)="onfacebookLogin()"  class="btn btn-primary float-right float-end">Sign In With Facebook</button> -->
             </form>

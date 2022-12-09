@@ -1,4 +1,10 @@
-<h6>User's Name</h6>
+<div class="wrapper">
+<div>
+    <img class="pic" src="{{data.photo}}" />
+</div>
+<mat-divider></mat-divider>
+<h4>{{data.firstName}} {{data.lastName}}</h4>
+<h6>{{data.email}}</h6>
 <mat-divider></mat-divider>
 <div>
 <h6  (click)="_auth.logoutUser()">
@@ -7,9 +13,9 @@
 </div>
 <mat-divider></mat-divider>
 <div>
-<h6  (click)="openDialog()">
+<h6  (click)="openDeleteDialog()">
     <mat-icon>delete_forever</mat-icon> &nbsp;Delete Account
 </h6>
 </div> 
-<mat-divider></mat-divider>
+</div>
 

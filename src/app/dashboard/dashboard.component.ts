@@ -14,7 +14,8 @@ import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
 })
 export class DashboardComponent implements OnInit {
   badgeCount:any=0;
-  username:any; 
+  loggedUserName:any; 
+  loggedUserData:any={};
   btntoggle:boolean = false;
   // @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
   @ViewChild('myButton',{read: ElementRef, static:false}) public myButtonRef!: ElementRef
@@ -28,10 +29,13 @@ export class DashboardComponent implements OnInit {
       name.unsubscribe()
       console.log(this.badgeCount,count)
     })
-    this._auth.getUserName.subscribe(uname=>{
-      this.username = uname
-      console.log(this.username)
-    })
+    this._apicall.userDetails().subscribe(
+      (res)=>{
+        console.log(res)
+        this.loggedUserData = res
+        this.loggedUserName = res.firstName
+      }
+    )
   }
   sidenav:any =true;
   menuicon:any = false;
@@ -56,10 +60,11 @@ sidenavToggler(){
     const right = bodyRect.right - elemRect.right;
     const top = elemRect.top - bodyRect.top+25;
     const dialogRef = this.dialog.open(MenuDialogComponent, {
-      width: '250px',
+      width: '300px',
       height:'300px',
       position: { right: right +'px', top: top + 'px' },
       hasBackdrop: true,
+      data: this.loggedUserData
     });
     dialogRef.afterClosed().subscribe();
   }

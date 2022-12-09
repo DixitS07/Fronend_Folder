@@ -1,0 +1,11 @@
+.pic{
+    height: 100px;
+    width:100px;
+    border-radius: 50px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
