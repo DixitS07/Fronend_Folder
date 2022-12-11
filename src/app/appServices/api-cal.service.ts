@@ -64,6 +64,10 @@ export class ApiCalService {
     return this.http.post('http://localhost:3000/api/deleteAccount',{password} )
   }
 
+  editProfile(updatedData:any){
+    return this.http.put('http://localhost:3000/api/userDetails' ,updatedData)
+  }
+
 }
 
 

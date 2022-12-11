@@ -58,14 +58,13 @@ export class RegisterComponent implements OnInit {
     )
   }
  
-<<<<<<< HEAD
   // registerUSer(){
   //   this._auth.registeredUser(this.registerUSerData).subscribe(
   //     (res:any)=>{
   //       console.log(res)
   //     this._auth.getUserName.next(res.uname)
   //     localStorage.setItem('token', res.token) 
-  //     
+  //     this._router.navigate(['/special']).then()
   //     const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
   //     const expireDate = tokenInfo.exp;
   //     this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
@@ -75,8 +74,6 @@ export class RegisterComponent implements OnInit {
   //   )
   // }
 
-=======
->>>>>>> b46e06affa8e51f153632f611eb973a7c4068c81
   save() {
     let form = this.myReactiveForm.value
     let formData = new FormData();
@@ -89,10 +86,10 @@ export class RegisterComponent implements OnInit {
     console.log(formData)
     this._auth.registeredUser(formData).subscribe(
       (data:any)=>{
-        this.toastr.success(data.message)
+      this.toastr.success(data.message)
       this.loader = false;
       localStorage.setItem('token', data.token)
-      this.router.navigate(['/special'])
+      this.router.navigate(['/dashboard'])
       const tokenInfo = this.getDecodedAccessToken(data.token); // decode token
       const expireDate = tokenInfo.exp;
       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
