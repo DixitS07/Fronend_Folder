@@ -4,9 +4,8 @@ import { Router } from '@angular/router';
 import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
 import jwt_decode from 'jwt-decode';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,FormControl ,Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-register',
@@ -14,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  Myenable: boolean = true;
+  form!: FormGroup;
   loader: boolean = false;
   myReactiveForm!: FormGroup;
   registerUSerData:any={}
@@ -45,6 +46,7 @@ export class RegisterComponent implements OnInit {
     }
   
   sendOtp(email:any){
+    this.Myenable = false;
     console.log(email.value)
     this._auth.otpVerify(email.value).subscribe(
       (res:any)=>{
@@ -56,6 +58,22 @@ export class RegisterComponent implements OnInit {
     )
   }
  
+  // registerUSer(){
+  //   this._auth.registeredUser(this.registerUSerData).subscribe(
+  //     (res:any)=>{
+  //       console.log(res)
+  //     this._auth.getUserName.next(res.uname)
+  //     localStorage.setItem('token', res.token) 
+  //     this._router.navigate(['/special']).then()
+  //     const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
+  //     const expireDate = tokenInfo.exp;
+  //     this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
+  //   }, (err) => {
+  //     console.log(err)
+  //     }
+  //   )
+  // }
+
   save() {
     let form = this.myReactiveForm.value
     let formData = new FormData();
@@ -68,16 +86,15 @@ export class RegisterComponent implements OnInit {
     console.log(formData)
     this._auth.registeredUser(formData).subscribe(
       (data:any)=>{
-        this.toastr.success(data.message)
+      this.toastr.success(data.message)
       this.loader = false;
       localStorage.setItem('token', data.token)
-      this.router.navigate(['/special'])
+      this.router.navigate(['/dashboard'])
       const tokenInfo = this.getDecodedAccessToken(data.token); // decode token
       const expireDate = tokenInfo.exp;
       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
-    }, (err) => {
-      this.loader = false
-      this.toastr.error(err.error.message)
+    }, (err:any) => {
+      this.toastr.error(err.message)
     })
   }
   
