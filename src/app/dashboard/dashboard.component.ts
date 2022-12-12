@@ -56,7 +56,7 @@ sidenavToggler(){
   openDialog() {
     const bodyRect = document.body.getBoundingClientRect();
     const elemRect = this.myButtonRef.nativeElement.getBoundingClientRect();
-    console.log(elemRect)
+    // console.log(elemRect)
     const right = bodyRect.right - elemRect.right;
     const top = elemRect.top - bodyRect.top+25;
     const dialogRef = this.dialog.open(MenuDialogComponent, {
