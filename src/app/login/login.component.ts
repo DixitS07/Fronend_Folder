@@ -32,16 +32,13 @@ export class LoginComponent implements OnInit {
        console.log(res)
        localStorage.setItem('token',res.token)
        this._router.navigate(['/special']);
-       this.toastr.success(" login Success");
+       this.toastr.success(res.message);
        const tokenInfo = this.getDecodedAccessToken(res.token); // decode token
        const expireDate = tokenInfo.exp;
        this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
         },
       (err)=>{console.log(err)
-      this.errormsg = err;
-      console.log(this.errormsg);
-      this.toastr.error(this.errormsg.error);
-
+      this.toastr.error(err.message);
       }
 
     )
