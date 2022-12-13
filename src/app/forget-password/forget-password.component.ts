@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiCalService } from '../appServices/api-cal.service';
@@ -12,47 +12,45 @@ import { AuthService } from '../appServices/auth.service';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  errormsg:any={}
+  errormsg: any = {}
 
   constructor(private _api: ApiCalService,
-    private _auth:AuthService,
-    private _router:Router,
-    private toastr: ToastrService,private fb:FormBuilder) { }
+    private _auth: AuthService,
+    private _router: Router,
+    private toastr: ToastrService, private fb: FormBuilder) { }
 
-    myReactiveForm!:FormGroup;
+  myReactiveForm!: FormGroup;
 
   ngOnInit(): void {
     if (this._auth.loggedIn()) {
       this._router.navigate(['/events'])
-  }
-  //   if (this._auth.loggedIn()) {
-  //     this._router.navigate(['/events'])
-  // }
- 
-  this.myReactiveForm = this.fb.group({
-    'email':['',[Validators.email,Validators.required]]
+    }
+    //   if (this._auth.loggedIn()) {
+    //     this._router.navigate(['/events'])
+    // }
+
+    this.myReactiveForm = this.fb.group({
+      'email': ['', [Validators.email, Validators.required]]
     })
-  
+
   }
 
-  Emailverify(){
-    console.log(this.myReactiveForm.value.email,'dixitrrrrrr')
-    localStorage.setItem('email',this.myReactiveForm.value.email)
+  Emailverify() {
+    console.log(this.myReactiveForm.value.email, 'dixitrrrrrr')
+    localStorage.setItem('email', this.myReactiveForm.value.email)
     // this._api.emailR.next(this.myReactiveForm.value.email)
-     this._api.resetPassword(this.myReactiveForm.value).subscribe(
-      (err)=>{
+    this._api.resetPassword(this.myReactiveForm.value).subscribe(
+      (res) => {
+        console.log(res),
+        this._router.navigate(['/confirmPassword']);
+        this.toastr.success(" Email Verified, OTP has been sent your email")
+        //  console.log(this.myReactiveForm.value)
+      },
+      (err) => {
         console.log(err)
-        this.errormsg = err;
-        console.log(this.errormsg);
-        this.toastr.error(this.errormsg.error);
+        this.toastr.error(err);
         // console.log(this.myReactiveForm.value)
-        },
-      (res)=>{console.log(res),
-      this._router.navigate(['/confirmPassword']);
-      this.toastr.success(" Email Verify");
-      
-      //  console.log(this.myReactiveForm.value)
-        }
+      },
     )
 
   }

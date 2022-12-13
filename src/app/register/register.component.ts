@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit {
       this.toastr.success(data.message)
       this.loader = false;
       localStorage.setItem('token', data.token)
-      this.router.navigate(['/dashboard'])
+      this.router.navigate(['/special'])
       const tokenInfo = this.getDecodedAccessToken(data.token); // decode token
       const expireDate = tokenInfo.exp;
       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())

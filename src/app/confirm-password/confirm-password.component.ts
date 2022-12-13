@@ -26,10 +26,10 @@ export class ConfirmPasswordComponent implements OnInit {
     if (this._auth.loggedIn()) {
       this._router.navigate(['/events'])
   }
-    this._api.emailR.subscribe(res=>{
-      this.emailRe = res;
-      console.log(res,this.emailRe,'emailget');
-    })
+    // this._api.emailR.subscribe(res=>{
+    //   this.emailRe = res;
+    //   console.log(res,this.emailRe,'emailget');
+    // })
     
     this.myReactiveForm = this.fb.group({
       'otp':[''],
@@ -42,8 +42,8 @@ export class ConfirmPasswordComponent implements OnInit {
   newPassword(){
     if (this.LoginPassword.Password == this.LoginPassword.confrimPassword) {
       console.log('Correct');
-
-      this._api.resetNewPassword(this.emailRe,this.myReactiveForm.value.otp,{'password':this.myReactiveForm.value.password}).subscribe(
+      var x = localStorage.getItem("email")
+      this._api.resetNewPassword(x,this.myReactiveForm.value.otp,{'password':this.myReactiveForm.value.password}).subscribe(
         (res)=>{console.log(res),
           this._router.navigate(['/login']);
           this.toastr.success(" password Successfully changed");
