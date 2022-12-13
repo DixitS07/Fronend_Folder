@@ -21,7 +21,6 @@ export class DialogeBoxComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:any, private fb:FormBuilder,private _snackBar: MatSnackBar,private _apical:ApiCalService ) {
       // console.log(data,'coming from slist to dialog')
     }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -54,20 +53,17 @@ export class DialogeBoxComponent implements OnInit {
     formdata.append('password',form.password) 
    this._apical.EditRow(formdata,this.data._id).subscribe((res)=>{
     console.log(res,'hello response from servr')
-   this._snackBar.open('Data Is Updated', 'Close',{
+   this._snackBar.open(res.message, 'Close',{
      duration: 500
    })
    window.location.reload();
-  }, 
+  },  
 (err)=>{
-    this._snackBar.open('Data Is Not Updated', 'Close',{
+    this._snackBar.open(err.message, 'Close',{
       duration: 1000
     })
     window.location.reload();
     console.log(err)
    }) 
    }
-  
- 
-
 }

@@ -28,10 +28,10 @@
               </div><br>
                <div class="form-group">
                  <label for="otp">OTP</label>
-                 <input  formControlName="otp" type="text" class="form-control rounded-o" required>
+                 <input [ngClass]="Myenable?'changestyle':'changestyle2'" formControlName="otp" type="text" class="form-control rounded-o" required>
                </div>
                <br><br>
-               <button type="submit"  class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
+               <button type="submit" [disabled]="!myReactiveForm.valid" class="btn btn-primary float-right float-end">Register</button>&nbsp;&nbsp;
                <!-- <button (click)="ongoogleSigin()"  class="btn btn-primary float-right float-end">SignInWithGoogle</button> -->
                <!-- <button (click)="onfacebookLogin()"  class="btn btn-primary float-right float-end">Sign In With Facebook</button> -->
             </form>
@@ -43,4 +43,4 @@
 
 
 
-  <!-- [disabled]="!form.valid" -->
+  <!-- " -->

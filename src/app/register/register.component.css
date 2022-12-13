@@ -6,3 +6,7 @@ p{
 .changestyle{
     pointer-events: none;
 }
+.changestyle2{
+    pointer-events: auto;
+
+}

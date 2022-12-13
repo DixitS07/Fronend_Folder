@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { ApiCalService } from '../appServices/api-cal.service';
 import { AuthService } from '../appServices/auth.service';
 
@@ -14,6 +16,7 @@ export class EditprofileComponent implements OnInit {
   selectedFile!:File;
 
   constructor( public _auth:AuthService,  private _apical:ApiCalService,private dialog:MatDialog,private fb:FormBuilder,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data:any) { }
 
   ngOnInit(): void {
@@ -34,12 +37,15 @@ export class EditprofileComponent implements OnInit {
     formdata.append('photo',this.selectedFile)
     formdata.append('firstName',form.firstName)
     formdata.append('lastName',form.lastName)
-   this._apical.editProfile(formdata).subscribe((res)=>{
-    console.log(res,'hello response from servr')
-   window.location.reload();
+    formdata.append('email',form.email)
+   this._apical.editProfile(formdata).subscribe((res:any)=>{
+    // console.log(res,'hello response from servr')
+    this.toastr.success(res.message)
+  //  window.location.reload();
   }, 
-(err)=>{
+(err:any)=>{
     console.log(err)
+    this.toastr.error(err.message)
    }) 
    }
 

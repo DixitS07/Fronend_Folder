@@ -8,64 +8,64 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class ApiCalService {
   badgeCount = new Subject<any>()
   emailR = new Subject<any>()
-  x:string = localStorage.getItem("token")!;
+  x: string = localStorage.getItem("token")!;
 
-  constructor(private http:HttpClient) { 
+  constructor(private http: HttpClient) {
   }
 
-  StudentList():Observable<any>{
+  StudentList(): Observable<any> {
     return this.http.get('http://localhost:3000/api/studentList',
     );
   }
-  userDetails():Observable<any>{
+  userDetails(): Observable<any> {
     return this.http.get('http://localhost:3000/api/userDetails',
     );
   }
-  
-  DeleteRow(id:any):Observable<any>{
- 
+
+  DeleteRow(id: any): Observable<any> {
+
     let params = new HttpParams({
       fromObject: {
-        _id:id
+        _id: id
       }
     })
     let headers = new HttpHeaders({
       authorization: this.x
     })
-    return this.http.delete('http://localhost:3000/api/student-register',{headers:headers, params:params})
+    return this.http.delete('http://localhost:3000/api/student-register', { headers: headers, params: params })
   }
-  EditRow(updatedData:any,id:any):Observable<any>{
+  EditRow(updatedData: any, id: any): Observable<any> {
     // console.log(updatedData,id)
     let params = new HttpParams({
-      fromObject:{
-        _id:id
+      fromObject: {
+        _id: id
       }
     })
     let headers = new HttpHeaders({
       authorization: this.x
     })
-    return this.http.put('http://localhost:3000/api/student-register',updatedData,{headers:headers, params:params})
+    return this.http.put('http://localhost:3000/api/student-register', updatedData, { headers: headers, params: params })
   }
-  resetPassword(email:any){
-    return this.http.post<void>('http://localhost:3000/api/reset-password',email)
+  resetPassword(email: any) {
+    return this.http.post<void>('http://localhost:3000/api/reset-password', email)
   }
-  resetNewPassword(email:any,otp:any,password:any){
+  resetNewPassword(email: any, otp: any, password: any) {
     // console.log(email,body,'dixit')
-    let param1 = new HttpParams({
-      fromObject:{
-        'email':"chetan",
-        'otp':"jangid"
-      }
-    })
-    return this.http.put(`http://localhost:3000/api/register?email=${email}&otp=${otp}`,password)
+    // let param1 = new HttpParams({
+    //   fromObject: {
+    //     'email': "chetan",
+    //     'otp': "jangid"
+    //   }
+    // })
+    return this.http.put(`http://localhost:3000/api/register?email=${email}&otp=${otp}`, password)
   }
 
-  delAccount(password:any){
-    return this.http.post('http://localhost:3000/api/deleteAccount',{password} )
+  delAccount(password: any) {
+    return this.http.post('http://localhost:3000/api/deleteAccount', { password })
   }
 
-  editProfile(updatedData:any){
-    return this.http.put('http://localhost:3000/api/userDetails' ,updatedData)
+  editProfile(updatedData: any) {
+    return this.http.put('http://localhost:3000/api/userDetails', updatedData)
   }
 
 }

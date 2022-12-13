@@ -19,24 +19,25 @@ export class StudentRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.myReactiveForm = this.fb.group({
-      'photo': [''], 
-      'firstName':[null,Validators.required],
+      'photo': ['',Validators.required], 
+      'firstName':['',Validators.required],
       'lastName': ['',Validators.required],
-      'age':[''],
-      'email':[null,[Validators.email,Validators.required]],
-      'phone': [''],
-      'address': [''],
-      'password':[''],
+      'age':['',Validators.required],
+      'email':['',[Validators.email,Validators.required]],
+      'phone': ['',Validators.required],
+      'address': ['',Validators.required],
+      'password':['',[Validators.required, Validators.minLength(6)]],
     })
   }
   
   getFile(event:any){
-    this.selectedFile = event.target.files[0]
+    // this.selectedFile = event.target.files[0]
+    this.selectedFile = event.target.files.item(0)
   }
 
   registerstudent(){
     this.progress= true
-    // console.log(this.myReactiveForm.value)
+    console.log(this.myReactiveForm.value,'dixitsinfhfhhhhhh')
     let form = this.myReactiveForm.value
     let formdata = new FormData();
     formdata.append('photo',this.selectedFile)
@@ -49,7 +50,7 @@ export class StudentRegistrationComponent implements OnInit {
     formdata.append('password',form.password)
     this._authservice.registeredStudent(formdata).subscribe((res:any)=>{
       console.log(res)
-      this._snackBar.open('Form Is Submitted', 'Close',{
+      this._snackBar.open(res.message, 'Close',{
         duration: 1000
       })
       this.progress=false
@@ -58,11 +59,13 @@ export class StudentRegistrationComponent implements OnInit {
      (err)=>{
       console.log(err)
       this.progress=false
-      this._snackBar.open('Form Is Not Submitted', 'Close',{
+      this._snackBar.open(err.message, 'Close',{
         duration: 1000
       })
     })
-  }
+  } 
+
+
 
  
 

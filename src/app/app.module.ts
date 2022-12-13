@@ -82,11 +82,11 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    NgxSpinnerModule,
     SocialLoginModule,
     MatMenuModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
     
   ],
   providers: [AuthService,EventService,AuthGuard,{
