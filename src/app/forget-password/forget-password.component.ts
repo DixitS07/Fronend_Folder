@@ -12,7 +12,8 @@ import { AuthService } from '../appServices/auth.service';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  errormsg: any = {}
+  errormsg:any={}
+  successmsg:any={}
 
   constructor(private _api: ApiCalService,
     private _auth: AuthService,
@@ -39,18 +40,23 @@ export class ForgetPasswordComponent implements OnInit {
     console.log(this.myReactiveForm.value.email, 'dixitrrrrrr')
     localStorage.setItem('email', this.myReactiveForm.value.email)
     // this._api.emailR.next(this.myReactiveForm.value.email)
-    this._api.resetPassword(this.myReactiveForm.value).subscribe(
-      (res) => {
-        console.log(res),
-        this._router.navigate(['/confirmPassword']);
-        this.toastr.success(" Email Verified, OTP has been sent your email")
-        //  console.log(this.myReactiveForm.value)
-      },
-      (err) => {
-        console.log(err)
-        this.toastr.error(err);
-        // console.log(this.myReactiveForm.value)
-      },
+     this._api.resetPassword(this.myReactiveForm.value).subscribe(
+      
+      (res:any)=>{
+        console.log(res), 
+        this.successmsg = res
+      this._router.navigate(['/confirmPassword']);
+      this.toastr.success(res.message);
+      
+      //  console.log(this.myReactiveForm.value)
+        },
+        (err:any)=>{
+          console.log(err)
+          this.errormsg = err;
+          console.log(this.errormsg);
+          this.toastr.error(err.error.message);
+          // console.log(this.myReactiveForm.value)
+          }
     )
 
   }

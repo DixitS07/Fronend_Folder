@@ -44,8 +44,8 @@ margin-bottom: 6px;
 .filesvgdiv{
   background-color: rgba(0, 255, 255, 0.819);
   border-radius: 50px;
-  height: 100px;
-  width:100px;
+  height: 50px;
+  width:50px;
   display: flex;
   margin:auto;
   justify-content: center;
