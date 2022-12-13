@@ -40,10 +40,9 @@ export class AuthService {
     
   }
   logoutUser(){
-    this._router.navigate(['/login'])
     window.location.reload();
+    this._router.navigate(['/login'])
     return localStorage.removeItem('token')
-
   }
   autoLogout(expireDate:any){
     setTimeout(() => {

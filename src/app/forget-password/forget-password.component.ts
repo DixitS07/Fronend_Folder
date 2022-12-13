@@ -13,6 +13,7 @@ import { AuthService } from '../appServices/auth.service';
 export class ForgetPasswordComponent implements OnInit {
 
   errormsg:any={}
+  successmsg:any={}
 
   constructor(private _api: ApiCalService,
     private _auth:AuthService,
@@ -40,19 +41,22 @@ export class ForgetPasswordComponent implements OnInit {
     localStorage.setItem('email',this.myReactiveForm.value.email)
     // this._api.emailR.next(this.myReactiveForm.value.email)
      this._api.resetPassword(this.myReactiveForm.value).subscribe(
-      (err)=>{
-        console.log(err)
-        this.errormsg = err;
-        console.log(this.errormsg);
-        this.toastr.error(this.errormsg.error);
-        // console.log(this.myReactiveForm.value)
-        },
-      (res)=>{console.log(res),
+      
+      (res:any)=>{
+        console.log(res), 
+        this.successmsg = res
       this._router.navigate(['/confirmPassword']);
-      this.toastr.success(" Email Verify");
+      this.toastr.success(res.message);
       
       //  console.log(this.myReactiveForm.value)
-        }
+        },
+        (err:any)=>{
+          console.log(err)
+          this.errormsg = err;
+          console.log(this.errormsg);
+          this.toastr.error(err.error.message);
+          // console.log(this.myReactiveForm.value)
+          }
     )
 
   }

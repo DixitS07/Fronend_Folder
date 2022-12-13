@@ -25,23 +25,24 @@ export class RegisterComponent implements OnInit {
               private _router: Router,
               private authService: SocialAuthService,
               private formBuilder: FormBuilder,
-              private router: Router,
               private toastr: ToastrService) { 
               }
 
   ngOnInit(): void {
+    if (this._auth.loggedIn()) {
+      this._router.navigate(['/events'])
+    }
     this.myReactiveForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       photo: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required,]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       otp: ['', [Validators.required,]]
     })
 
     }
     getFile(event:any){
-      // this.fileToUpload = event.target.files[0]
       this.fileToUpload = event.target.files.item(0)
     }
   
@@ -49,12 +50,15 @@ export class RegisterComponent implements OnInit {
     this.Myenable = false;
     console.log(email.value)
     this._auth.otpVerify(email.value).subscribe(
-      (res:any)=>{
-        this.toastr.success(res.message)
-      },
       (err:any)=>{
-        this.toastr.error(err.message)
+        this.toastr.error(err.error.text)
+        console.log(err,"error");
+      },
+      (res:any)=>{
+        this.toastr.success(res.error.text)
+        console.log(res);
       }
+      
     )
   }
  
@@ -89,12 +93,13 @@ export class RegisterComponent implements OnInit {
       this.toastr.success(data.message)
       this.loader = false;
       localStorage.setItem('token', data.token)
-      this.router.navigate(['/dashboard'])
+      this._router.navigate(['/events'])
       const tokenInfo = this.getDecodedAccessToken(data.token); // decode token
       const expireDate = tokenInfo.exp;
       this._auth.autologout(new Date(expireDate * 1000).getTime() - new Date().getTime())
     }, (err:any) => {
-      this.toastr.error(err.message)
+      console.log(err)
+      this.toastr.error(err.error.message)
     })
   }
   
