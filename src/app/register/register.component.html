@@ -25,8 +25,10 @@
                <div class="form-group">
                 <label for="email">Email</label>
                 <input formControlName='email' name="email" type="email" class="form-control rounded-0"  #email (change)="sendOtp(email)">
+                <small class="text-success" *ngIf="myReactiveForm.get('email')?.valid"> We Will Send An OTP To Verify This Email</small>
+                <small class="text-danger" *ngIf="!myReactiveForm.get('email')?.valid && myReactiveForm.get('email')?.touched">Please Enter A Valid Email</small>
               </div><br>
-               <div class="form-group">
+               <div class="form-group" *ngIf="myReactiveForm.get('email')?.valid">
                  <label for="otp">OTP</label>
                  <input [ngClass]="Myenable?'changestyle':'changestyle2'" formControlName="otp" type="text" class="form-control rounded-o" required>
                </div>
