@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiCalService } from '../appServices/api-cal.service';
@@ -16,29 +16,29 @@ export class ForgetPasswordComponent implements OnInit {
   successmsg:any={}
 
   constructor(private _api: ApiCalService,
-    private _auth:AuthService,
-    private _router:Router,
-    private toastr: ToastrService,private fb:FormBuilder) { }
+    private _auth: AuthService,
+    private _router: Router,
+    private toastr: ToastrService, private fb: FormBuilder) { }
 
-    myReactiveForm!:FormGroup;
+  myReactiveForm!: FormGroup;
 
   ngOnInit(): void {
     if (this._auth.loggedIn()) {
       this._router.navigate(['/events'])
-  }
-  //   if (this._auth.loggedIn()) {
-  //     this._router.navigate(['/events'])
-  // }
- 
-  this.myReactiveForm = this.fb.group({
-    'email':['',[Validators.email,Validators.required]]
+    }
+    //   if (this._auth.loggedIn()) {
+    //     this._router.navigate(['/events'])
+    // }
+
+    this.myReactiveForm = this.fb.group({
+      'email': ['', [Validators.email, Validators.required]]
     })
-  
+
   }
 
-  Emailverify(){
-    console.log(this.myReactiveForm.value.email,'dixitrrrrrr')
-    localStorage.setItem('email',this.myReactiveForm.value.email)
+  Emailverify() {
+    console.log(this.myReactiveForm.value.email, 'dixitrrrrrr')
+    localStorage.setItem('email', this.myReactiveForm.value.email)
     // this._api.emailR.next(this.myReactiveForm.value.email)
      this._api.resetPassword(this.myReactiveForm.value).subscribe(
       

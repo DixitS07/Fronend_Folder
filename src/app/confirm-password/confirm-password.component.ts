@@ -31,8 +31,6 @@ export class ConfirmPasswordComponent implements OnInit {
     //   console.log(res,this.emailRe,'emailget');
     // })
  
-
-    
     this.myReactiveForm = this.fb.group({
       'otp':[''],
       'password':[''],
@@ -45,8 +43,6 @@ export class ConfirmPasswordComponent implements OnInit {
     if (this.LoginPassword.Password == this.LoginPassword.confrimPassword) {
       console.log('Correct');
       var x = localStorage.getItem("email");
-
-
       this._api.resetNewPassword(x,this.myReactiveForm.value.otp,{'password':this.myReactiveForm.value.password}).subscribe(
         (res)=>{console.log(res),
           this._router.navigate(['/login']);

@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       otp: ['', [Validators.required,]]
     })
-
+    console.log(this.myReactiveForm)
     }
     getFile(event:any){
       this.fileToUpload = event.target.files.item(0)
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
   
   sendOtp(email:any){
     this.Myenable = false;
-    console.log(email.value)
+    if(this.myReactiveForm.get('email')?.valid){
     this._auth.otpVerify(email.value).subscribe(
       (err:any)=>{
         this.toastr.error(err.error.text)
@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
       }
       
     )
+    }
   }
  
   // registerUSer(){
@@ -87,7 +88,7 @@ export class RegisterComponent implements OnInit {
     formData.append('password',form.password)
     formData.append('otp', form.otp)
     formData.append('photo', this.fileToUpload,this.fileToUpload.name)
-    console.log(formData)
+    // console.log(formData)
     this._auth.registeredUser(formData).subscribe(
       (data:any)=>{
       this.toastr.success(data.message)
