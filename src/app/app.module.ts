@@ -37,6 +37,7 @@ import { DeleteAccountComponent } from './dashboard/delete-account/delete-accoun
 import {MatDialogModule} from '@angular/material/dialog';
 import { MenuDialogComponent } from './dashboard/menu-dialog/menu-dialog.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { ImgUploadDirective } from './appDirectives/img-upload.directive';
 
 
 
@@ -58,6 +59,7 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
     DeleteAccountComponent,
     MenuDialogComponent,
     EditprofileComponent,
+    ImgUploadDirective,
   ],
   imports: [
     BrowserModule,

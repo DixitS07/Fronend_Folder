@@ -41,7 +41,7 @@ export class EditprofileComponent implements OnInit {
    this._apical.editProfile(formdata).subscribe((res:any)=>{
     // console.log(res,'hello response from servr')
     this.toastr.success(res.message)
-  //  window.location.reload();
+    window.location.reload();
   }, 
 (err:any)=>{
     console.log(err)
