@@ -1,6 +1,5 @@
-import { formatCurrency } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../appServices/auth.service';
@@ -11,15 +10,19 @@ import { AuthService } from '../appServices/auth.service';
   styleUrls: ['./student-registration.component.css']
 })
 export class StudentRegistrationComponent implements OnInit {
-  constructor(private _authservice:AuthService, private _router:Router, private fb:FormBuilder, private _snackBar: MatSnackBar) { }
+  constructor(private _authservice:AuthService, private _router:Router, private fb:FormBuilder, private _snackBar: MatSnackBar,private renderer:Renderer2 ) { }
 
   selectedFile!:File;
   myReactiveForm!:FormGroup;
   progress:boolean=false;
+  imgshow:boolean = false;
+  imgurl:any
+  @ViewChild('imgupload') imgupload!:ElementRef
+  @ViewChild('myimg') myimg!:ElementRef
 
   ngOnInit(): void {
     this.myReactiveForm = this.fb.group({
-      'photo': ['',Validators.required], 
+      'photo': ['',Validators.required],  
       'firstName':['',Validators.required],
       'lastName': ['',Validators.required],
       'age':['',Validators.required],
@@ -30,10 +33,20 @@ export class StudentRegistrationComponent implements OnInit {
     })
   }
   
+  
   getFile(event:any){
-    // this.selectedFile = event.target.files[0]
+    this.imgshow = true
     this.selectedFile = event.target.files.item(0)
-  }
+    const reader = new FileReader();
+    // console.log(reader,'from getfile')
+    reader.onload = () => {
+      this.imgurl = reader.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
+    // console.log(event,'from getfilefn')
+    }
+ 
+  
 
   registerstudent(){
     this.progress= true

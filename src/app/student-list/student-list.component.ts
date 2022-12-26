@@ -108,10 +108,8 @@ makePdf() {
     // console.log(this.fetchData,"CSV DATA")
     this.fetchData.forEach((element:any) => {
     delete element['_id'];
-    delete element['photo']
-    delete element['__v'];
-    delete element['password'];
-      
+    delete element['photo'];
+    //other fileds are deleted via mongodb aggregation
     });
     var options = { 
       fieldSeparator: ',',
